@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio Manager", "Audio Manager.csproj", "{4AE8EED6-B9DE-4AE2-9802-6DBF9B75E226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AE8EED6-B9DE-4AE2-9802-6DBF9B75E226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE8EED6-B9DE-4AE2-9802-6DBF9B75E226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE8EED6-B9DE-4AE2-9802-6DBF9B75E226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE8EED6-B9DE-4AE2-9802-6DBF9B75E226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABD01417-6E55-4E05-B654-27A9A9E11551}
+	EndGlobalSection
+EndGlobal
