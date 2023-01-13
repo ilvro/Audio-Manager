@@ -30,6 +30,8 @@ namespace Audio_Manager
             // start with the main page, tracks
             Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
 
+
+            // check for files
             if (File.Exists("currentPage=tracks.txt") || File.Exists("currentPage=playlists.txt"))
             {
 
@@ -39,6 +41,20 @@ namespace Audio_Manager
                 File.Create("currentPage=tracks.txt");
             }
 
+            if (Directory.Exists("sounds"))
+            {
+
+            }
+            else
+            {
+                Directory.CreateDirectory("sounds");
+                MessageBox.Show("made a new directory");
+            }
+            // make the app always start on the tracks page
+            if (getCurrentPage() == "playlists")
+            {
+                changeCurrentPage();
+            }
             switchColors();
         }
 
