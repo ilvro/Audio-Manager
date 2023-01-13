@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,24 +29,42 @@ namespace Audio_Manager
 
             // start with the main page, tracks
             Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
-            switchColors("tracks");
+
+            if (File.Exists("currentPage=tracks.txt") || File.Exists("currentPage=playlists.txt"))
+            {
+
+            }
+            else
+            {
+                File.Create("currentPage=tracks.txt");
+            }
+
+            switchColors();
         }
 
         private void TrackBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
-            switchColors("tracks");
+            if (getCurrentPage() != "tracks")
+            {
+                changeCurrentPage();
+                switchColors();
+            }
         }
 
         private void PlaylistBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.NavigationService.Navigate(new Uri("pages/playlists.xaml", UriKind.Relative));
-            switchColors("playlists");
+            if (getCurrentPage() != "playlists")
+            {
+                changeCurrentPage();
+                switchColors();
+            }
         }
 
-        public void switchColors(string newPage)
+        public void switchColors()
         {
-            if (newPage == "playlists")
+            if (getCurrentPage() == "playlists")
             {
                 TracksBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 TracksBtn.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
@@ -60,6 +79,29 @@ namespace Audio_Manager
                 PlaylistBtn.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             }
         }
-        
+
+        public string getCurrentPage()
+        {
+            if (File.Exists("currentPage=tracks.txt"))
+            {
+                return "tracks";
+            }
+            else
+            {
+                return "playlists";
+            }
+        }
+
+        public void changeCurrentPage()
+        {
+            if (getCurrentPage() == "tracks")
+            {
+                File.Move("currentPage=tracks.txt", "currentPage=playlists.txt");
+            }
+            else
+            {
+                File.Move("currentPage=playlists.txt", "currentPage=tracks.txt");
+            }
+        }
     }
 }
