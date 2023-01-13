@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,16 +25,41 @@ namespace Audio_Manager
         {
             InitializeComponent();
             this.Title = "Audio Manager";
+
+            // start with the main page, tracks
+            Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
+            switchColors("tracks");
         }
 
         private void TrackBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("clicked on track");
+            Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
+            switchColors("tracks");
         }
 
         private void PlaylistBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("clicked on playlist");
+            Main.NavigationService.Navigate(new Uri("pages/playlists.xaml", UriKind.Relative));
+            switchColors("playlists");
         }
+
+        public void switchColors(string newPage)
+        {
+            if (newPage == "playlists")
+            {
+                TracksBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                TracksBtn.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                PlaylistBtn.Background = new SolidColorBrush(Color.FromRgb(218, 218, 218));
+                PlaylistBtn.Foreground = new SolidColorBrush(Color.FromRgb(170, 170, 170));
+            }
+            else
+            {
+                TracksBtn.Background = new SolidColorBrush(Color.FromRgb(218, 218, 218));
+                TracksBtn.Foreground = new SolidColorBrush(Color.FromRgb(170, 170, 170));
+                PlaylistBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                PlaylistBtn.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            }
+        }
+        
     }
 }

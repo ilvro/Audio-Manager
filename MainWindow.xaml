@@ -52,9 +52,9 @@
                 </Style>
             </Button.Resources>
         </Button>
-        
-        
-        
+
+
+
         <Button x:Name="TracksBtn" Content="Tracks" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="TrackBtn_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -81,6 +81,6 @@
             </Button.Resources>
         </Button>
 
-
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
