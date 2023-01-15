@@ -1,0 +1,25 @@
+﻿<Page x:Class="Audio_Controller.pages.tracks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Audio_Controller.pages"
+      mc:Ignorable="d" 
+      Height="504.878" Width="548.781"
+      Title="tracks">
+
+    <Grid Name="mainGrid">
+        <TextBlock Text="tracks" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,104,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24"/>
+        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,141,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="2"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+
+    </Grid>
+</Page>
