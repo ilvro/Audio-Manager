@@ -150,5 +150,10 @@ namespace Audio_Controller
                 TracksBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             }
         }
+
+        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.Focus();
+        }
     }
 }
