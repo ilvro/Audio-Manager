@@ -119,5 +119,38 @@ namespace Audio_Manager
                 File.Move("currentPage=playlists.txt", "currentPage=tracks.txt");
             }
         }
+
+        private void PlaylistBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (getCurrentPage() != "playlists")
+            {
+                PlaylistBtn.Background = new SolidColorBrush(Color.FromRgb(227, 227, 227));
+            }
+        }
+
+        private void PlaylistBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (getCurrentPage() != "playlists")
+            {
+                PlaylistBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
+        }
+
+        private void TracksBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (getCurrentPage() != "tracks")
+            {
+                TracksBtn.Background = new SolidColorBrush(Color.FromRgb(227, 227, 227));
+            }
+        }
+
+        private void TracksBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (getCurrentPage() != "tracks")
+            {
+                TracksBtn.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
+        }
+
     }
 }

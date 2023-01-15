@@ -24,5 +24,16 @@ namespace Audio_Manager.pages
         {
             InitializeComponent();
         }
+
+        private void searchBar_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            searchBar.Text = "";
+        }
+
+        private void searchBar_LostFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

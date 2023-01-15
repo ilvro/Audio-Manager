@@ -8,10 +8,10 @@
       Height="504.878" Width="548.781"
       Title="tracks">
 
-    <Grid>
+    <Grid Name="mainGrid">
         <TextBlock Text="tracks" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Margin="25,104,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="25,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center">
+        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,141,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" GotMouseCapture="searchBar_GotMouseCapture">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>
@@ -19,6 +19,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBlock HorizontalAlignment="Left" Margin="28,147,0,0" TextWrapping="Wrap" Text="Begin by typing to choose tracks by title..." VerticalAlignment="Top" FontSize="16" Foreground="DarkGray" Height="26" Width="374"/>
+
+
     </Grid>
 </Page>
