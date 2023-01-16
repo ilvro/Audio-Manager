@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audio_Controller"
         mc:Ignorable="d"
-        Title="MainWindow" Height="504.878" Width="548.781" PreviewMouseDown="Window_PreviewMouseDown">
+        Title="MainWindow" Height="586.878" Width="548.781" PreviewMouseDown="Window_PreviewMouseDown">
     <Grid Margin="0,0,2,0">
         <TextBox x:Name="line"
                  FontSize="13"

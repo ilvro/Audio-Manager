@@ -40,10 +40,5 @@ namespace Audio_Controller.pages
                 searchBar.Text = " Begin by typing to choose tracks by title...";
             }
         }
-        private void searchBar_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            searchBar.Text = "";
-        }
-
     }
 }
