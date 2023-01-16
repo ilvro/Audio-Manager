@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-﻿<Application x:Class="Audio_Controller.App"
+<Application x:Class="Audio_Controller.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Audio_Controller"
-=======
-﻿<Application x:Class="Audio_Manager.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Audio_Manager"
->>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>
