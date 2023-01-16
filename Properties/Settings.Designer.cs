@@ -9,7 +9,11 @@
 //------------------------------------------------------------------------------
 
 
+<<<<<<< HEAD
 namespace Audio_Controller.Properties
+=======
+namespace Audio_Manager.Properties
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]

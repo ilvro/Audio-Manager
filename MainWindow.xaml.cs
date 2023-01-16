@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Diagnostics;
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,7 +18,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+<<<<<<< HEAD
 namespace Audio_Controller
+=======
+namespace Audio_Manager
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -151,9 +159,12 @@ namespace Audio_Controller
             }
         }
 
+<<<<<<< HEAD
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Main.Focus();
         }
+=======
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
     }
 }

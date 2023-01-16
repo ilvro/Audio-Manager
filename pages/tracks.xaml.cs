@@ -13,7 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+<<<<<<< HEAD
 namespace Audio_Controller.pages
+=======
+namespace Audio_Manager.pages
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 {
     /// <summary>
     /// Interaction logic for tracks.xaml
@@ -25,6 +29,7 @@ namespace Audio_Controller.pages
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (searchBar.Text == " Begin by typing to choose tracks by title...")
@@ -40,5 +45,17 @@ namespace Audio_Controller.pages
                 searchBar.Text = " Begin by typing to choose tracks by title...";
             }
         }
+=======
+        private void searchBar_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            searchBar.Text = "";
+        }
+
+        private void searchBar_LostFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
     }
 }

@@ -13,7 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+<<<<<<< HEAD
 namespace Audio_Controller.pages
+=======
+namespace Audio_Manager.pages
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 {
     /// <summary>
     /// Interaction logic for playlists.xaml

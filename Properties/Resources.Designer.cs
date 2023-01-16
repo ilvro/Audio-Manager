@@ -9,7 +9,11 @@
 //------------------------------------------------------------------------------
 
 
+<<<<<<< HEAD
 namespace Audio_Controller.Properties
+=======
+namespace Audio_Manager.Properties
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -43,7 +47,11 @@ namespace Audio_Controller.Properties
             {
                 if ((resourceMan == null))
                 {
+<<<<<<< HEAD
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Audio_Controller.Properties.Resources", typeof(Resources).Assembly);
+=======
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Audio_Manager.Properties.Resources", typeof(Resources).Assembly);
+>>>>>>> 99b28e728fe314328daff63fc435a15fd877dfcf
                     resourceMan = temp;
                 }
                 return resourceMan;
