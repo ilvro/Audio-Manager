@@ -27,7 +27,18 @@ namespace Audio_Controller.pages
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            searchBar.Text = "";
+            if (searchBar.Text == " Begin by typing to choose tracks by title...")
+            {
+                searchBar.Text = "";
+            }
+        }
+
+        private void searchBar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (searchBar.Text == "")
+            {
+                searchBar.Text = " Begin by typing to choose tracks by title...";
+            }
         }
     }
 }

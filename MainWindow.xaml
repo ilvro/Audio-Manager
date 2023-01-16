@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audio_Controller"
         mc:Ignorable="d"
-        Title="MainWindow" Height="504.878" Width="548.781" PreviewMouseDown="Window_PreviewMouseDown">
+        Title="MainWindow" Height="550.878" Width="548.781" PreviewMouseDown="Window_PreviewMouseDown">
     <Grid Margin="0,0,2,0">
         <TextBox x:Name="line"
                  FontSize="13"
@@ -19,7 +19,7 @@
                  BorderThickness="0,0,0,2"
                  Opacity="0.8"
                  
-                Margin="0,5,0,455"></TextBox>
+                Margin="0,0,0,500"></TextBox>
 
         <Button x:Name="PlaylistBtn" Content="Playlists" HorizontalAlignment="Left" Margin="272,38,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="PlaylistBtn_Click" MouseEnter="PlaylistBtn_MouseEnter" MouseLeave="PlaylistBtn_MouseLeave">
             <Button.Resources>
