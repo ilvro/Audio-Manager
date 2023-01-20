@@ -41,15 +41,6 @@ namespace Audio_Controller
                 File.Create("currentPage=tracks.txt");
             }
 
-            if (Directory.Exists("sounds"))
-            {
-
-            }
-            else
-            {
-                Directory.CreateDirectory("sounds");
-                MessageBox.Show("made a new directory");
-            }
             // make the app always start on the tracks page
             if (getCurrentPage() == "playlists")
             {

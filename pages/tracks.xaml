@@ -10,7 +10,7 @@
 
     <Grid Name="mainGrid">
         <TextBlock HorizontalAlignment="Left" Margin="25,194,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,240,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus">
+        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,231,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>
@@ -18,7 +18,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button Content="Choose a file or drag it here." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="465" Height="68" Margin="37,111,47,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True"/>
+        <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="465" Height="68" Margin="37,111,47,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop"/>
 
 
     </Grid>

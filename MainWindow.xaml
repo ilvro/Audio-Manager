@@ -19,7 +19,7 @@
                  BorderThickness="0,0,0,2"
                  Opacity="0.8"
                  
-                Margin="0,5,0,455"></TextBox>
+                Margin="0,0,0,537"></TextBox>
 
         <Button x:Name="PlaylistBtn" Content="Playlists" HorizontalAlignment="Left" Margin="272,38,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="PlaylistBtn_Click" MouseEnter="PlaylistBtn_MouseEnter" MouseLeave="PlaylistBtn_MouseLeave">
             <Button.Resources>
