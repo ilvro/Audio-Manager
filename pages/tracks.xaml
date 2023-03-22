@@ -19,11 +19,7 @@
             </TextBox.Resources>
         </TextBox>
         <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,120,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop"/>
-        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10">
-            
-        </Border>
-        <DataGrid
-            
+        <DataGrid  
             ItemsSource="{Binding Songs}"
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
             HorizontalAlignment="Left" 
