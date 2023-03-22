@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:Audio_Controller"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#69717D" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
     </Application.Resources>
 </Application>

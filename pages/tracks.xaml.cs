@@ -53,8 +53,7 @@ namespace Audio_Controller.pages
             {
                 string filePath = openFileDialog.FileName;
                 string fileName = Path.GetFileName(filePath);
-                string fileType = filePath.Substring(filePath.Length - 3);
-                saveUploadedFile(filePath, fileType, fileName);
+                saveUploadedFile(filePath, fileName);
             }
         }
 
@@ -65,14 +64,13 @@ namespace Audio_Controller.pages
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 string fileName = Path.GetFileName(files[0]);
-                string filePath = Path.GetDirectoryName(files[0]) + "\\"+ fileName;
-                string fileType = fileName.Substring(fileName.Length - 3);
+                string filePath = Path.GetDirectoryName(files[0]) + "\\"+ fileName;;
                 FileUpload_Btn.Content = "Uploading "+fileName+"...";
-                saveUploadedFile(filePath, fileType, fileName);
+                saveUploadedFile(filePath, fileName);
             }
         }
 
-        public void saveUploadedFile(string path, string fileType, string fileName)
+        public void saveUploadedFile(string path, string fileName)
         {
             string uploadFolder = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\tracks\\" + fileName;
             System.Diagnostics.Process process = new System.Diagnostics.Process();
