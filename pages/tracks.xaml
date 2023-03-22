@@ -19,7 +19,11 @@
             </TextBox.Resources>
         </TextBox>
         <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,120,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop"/>
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+            
+        </Border>
         <DataGrid
+            
             ItemsSource="{Binding Songs}"
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
             HorizontalAlignment="Left" 
@@ -27,16 +31,17 @@
             Margin="25,284,0,0" 
             VerticalAlignment="Top" 
             Width="498"
-            Background="#fcfcfc"
-            BorderThickness="0.5"
+            Background="#faf7f5"
             
             x:Name="tracksDataGrid"
             GridLinesVisibility="All">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="      Title" IsReadOnly="True" Width="200" Binding="{Binding Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="200" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="211" Binding="{Binding Description}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date Added" IsReadOnly="True" Width="85"></DataGridTextColumn>
             </DataGrid.Columns>
+
+            
         </DataGrid>
 
 
