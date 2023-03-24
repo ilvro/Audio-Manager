@@ -33,7 +33,7 @@
             GridLinesVisibility="All">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="      Title" IsReadOnly="True" Width="200" Binding="{Binding Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="211" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" IsReadOnly="True" Width="210" Binding="{Binding Description}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date Added" IsReadOnly="True" Width="85"></DataGridTextColumn>
             </DataGrid.Columns>
 
