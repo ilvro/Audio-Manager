@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Audio_Controller.classes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,7 @@ using System.Windows.Shapes;
 using Xabe.FFmpeg;
 using FFMpegCore;
 using Path = System.IO.Path;
+using System.Collections.ObjectModel;
 
 namespace Audio_Controller.pages
 {
@@ -24,9 +26,19 @@ namespace Audio_Controller.pages
     /// </summary>
     public partial class tracks : Page
     {
+        public ObservableCollection<Song> Songs { get; set; }
         public tracks()
         {
             InitializeComponent();
+
+            // add songs to the listview
+            Songs = new ObservableCollection<Song>
+            {
+                new Song("Song 1", "Artist 1", "Album 1", "3:25"),
+                new Song("Song 2", "Artist 2", "Album 2", "4:12"),
+                new Song("Song 3", "Artist 3", "Album 3", "2:58")
+            };
+            TracksView.ItemsSource = Songs;
         }
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
