@@ -46,6 +46,7 @@ namespace Audio_Controller.pages
             if (searchBar.Text == " Begin by typing to choose tracks by title...")
             {
                 searchBar.Text = "";
+                searchBar.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
 
@@ -54,6 +55,7 @@ namespace Audio_Controller.pages
             if (searchBar.Text == "")
             {
                 searchBar.Text = " Begin by typing to choose tracks by title...";
+                searchBar.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
         }
 

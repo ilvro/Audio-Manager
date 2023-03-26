@@ -7,6 +7,8 @@
       mc:Ignorable="d" 
       Height="586.878" Width="548.781"
       Title="tracks">
+    
+    
 
     <Grid Name="mainGrid">
 
@@ -27,8 +29,15 @@
           Foreground="White"
           FontSize="16"
           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,272,26,98">
+          ScrollViewer.VerticalScrollBarVisibility="Auto" 
+          Margin="25,272,26,98">
 
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Title" Width="200">
