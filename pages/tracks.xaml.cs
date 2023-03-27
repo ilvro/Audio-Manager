@@ -34,9 +34,9 @@ namespace Audio_Controller.pages
             // add songs to the listview
             Songs = new ObservableCollection<Song>
             {
-                new Song("Song 1", "Artist 1", "Album 1", "3:25"),
-                new Song("Song 2", "Artist 2", "Album 2", "4:12"),
-                new Song("Song 3", "Artist 3", "Album 3", "2:58")
+                new Song("Name 1", "3:25"),
+                new Song("Name 2", "4:12"),
+                new Song("Name 3", "2:18"),
             };
             TracksView.ItemsSource = Songs;
         }

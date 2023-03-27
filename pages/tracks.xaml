@@ -22,60 +22,13 @@
             </TextBox.Resources>
         </TextBox>
         <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,120,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop"/>
-        <ListView x:Name="TracksView" ItemsSource="{Binding Songs}"
-          Grid.Row="0"
-          BorderThickness="0"
-          Background="#212121"
-          Foreground="White"
-          FontSize="16"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          ScrollViewer.VerticalScrollBarVisibility="Auto" 
-          Margin="25,272,26,98">
 
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Title" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Description" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Description}" VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Duration" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Duration}" VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="DURATION" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Duration}" VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-
+        <ListView Background="White"
+                  ScrollViewer.CanContentScroll="False"
+                  ItemsSource="{Binding Songs}"
+                  Style="{StaticResource ListStyle}"
+                  x:Name="TracksView" Margin="25,288,26,72">
+                   
         </ListView>
 
 

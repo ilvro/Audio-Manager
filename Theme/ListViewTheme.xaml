@@ -27,7 +27,7 @@
                             <Style TargetType="DockPanel">
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#303030"/>
+                                        <Setter Property="Background" Value="#dadada"/>
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="False">
                                         <Setter Property="Background" Value="Transparent"/>
@@ -37,20 +37,16 @@
                                         AncestorType={x:Type ListBoxItem}},
                                         Path=IsSelected}" Value="True">
 
-                                        <Setter Property="Background" Value="#303030"/>
+                                        <Setter Property="Background" Value="#e3e3e3"/>
 
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </DockPanel.Style>
-                        <StackPanel Margin="4,0,0,0">
-                            <TextBlock Text="{Binding}" Foreground="White" FontSize="14" FontWeight="Medium"></TextBlock>
-                            <TextBlock Text="{Binding}" Foreground="Gray" FontSize="14"></TextBlock>
-                            
-                        </StackPanel>
 
-                        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,8">
-                            <TextBlock Text="{Binding Duration}" FontWeight="Medium" Foreground="Gray"></TextBlock>
+                        <Grid>
+                            <TextBlock Text="{Binding Duration}" FontWeight="Medium" Foreground="Black" Margin="0,0,0,8" HorizontalAlignment="Right"></TextBlock>
+                            <TextBlock Text="{Binding Title}" Foreground="Black" FontSize="14" FontWeight="Medium" HorizontalAlignment="Left"></TextBlock>
                         </Grid>
                     </DockPanel>
                 </DataTemplate>
