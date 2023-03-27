@@ -37,7 +37,7 @@
                                         AncestorType={x:Type ListBoxItem}},
                                         Path=IsSelected}" Value="True">
 
-                                        <Setter Property="Background" Value="#e3e3e3"/>
+                                        <Setter Property="Background" Value="White"/>
 
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -45,8 +45,8 @@
                         </DockPanel.Style>
 
                         <Grid>
-                            <TextBlock Text="{Binding Duration}" FontWeight="Medium" Foreground="Black" Margin="0,0,0,8" HorizontalAlignment="Right"></TextBlock>
-                            <TextBlock Text="{Binding Title}" Foreground="Black" FontSize="14" FontWeight="Medium" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,12,8,12" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding Title}" Foreground="Black" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
                         </Grid>
                     </DockPanel>
                 </DataTemplate>

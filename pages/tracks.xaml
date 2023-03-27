@@ -7,13 +7,17 @@
       mc:Ignorable="d" 
       Height="586.878" Width="548.781"
       Title="tracks">
-    
-    
+
+
 
     <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="275*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Left" Margin="25,194,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,231,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus">
+        <TextBlock HorizontalAlignment="Left" Margin="25,194,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24" Height="32" Width="112"/>
+        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,231,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="498" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus" Grid.ColumnSpan="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>
@@ -21,14 +25,14 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,120,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop"/>
+        <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,120,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop" Grid.ColumnSpan="2"/>
 
         <ListView Background="White"
                   ScrollViewer.CanContentScroll="False"
                   ItemsSource="{Binding Songs}"
                   Style="{StaticResource ListStyle}"
-                  x:Name="TracksView" Margin="25,288,26,72">
-                   
+                  x:Name="TracksView" Margin="25,285,27,75" Grid.ColumnSpan="2">
+
         </ListView>
 
 
