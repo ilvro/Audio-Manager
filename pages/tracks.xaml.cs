@@ -32,30 +32,7 @@ namespace Audio_Controller.pages
         public tracks()
         {
             InitializeComponent();
-
-            string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            if (currentPath.Contains("bin\\Debug"))
-            {
-                currentPath = currentPath.Replace("bin\\Debug", "");
-            }
-
-            // add songs to the listview
-            string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
-            List<Song> songs = new List<Song>();
-
-            foreach (string filePath in mp3Files)
-            {
-                string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
-                Mp3FileReader reader = new Mp3FileReader(filePath);
-                TimeSpan duration = reader.TotalTime;
-
-                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
-                songs.Add(song);
-            }
-
-            // the List<Song> "songs" now contains all the songs in the "tracks" folder
-
-            TracksView.ItemsSource = songs;
+            updateFileList();
         }
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -98,6 +75,7 @@ namespace Audio_Controller.pages
                 string filePath = Path.GetDirectoryName(files[0]) + "\\" + fileName; ;
                 FileUpload_Btn.Content = "Uploading " + fileName + "...";
                 saveUploadedFile(filePath, fileName);
+
             }
         }
 
@@ -109,10 +87,45 @@ namespace Audio_Controller.pages
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
             startInfo.WorkingDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-            startInfo.Arguments = "/C ffmpeg -i " + path + " tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3";
+            startInfo.Arguments = "/C ffmpeg -i \"" + path + "\" \"tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3\"";
             process.StartInfo = startInfo;
             process.Start();
+            MessageBox.Show("/C ffmpeg -i \"" + path + "\" \"tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3\"");
+            updateFileList();
 
+        }
+
+        public void updateFileList()
+        {
+            string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            if (currentPath.Contains("bin\\Debug"))
+            {
+                currentPath = currentPath.Replace("bin\\Debug", "");
+            }
+
+            string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
+            List<Song> songs = new List<Song>();
+
+            foreach (string filePath in mp3Files)
+            {
+                try
+                {
+                    string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
+                    Mp3FileReader reader = new Mp3FileReader(filePath);
+                    TimeSpan duration = reader.TotalTime;
+
+                    Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
+                    songs.Add(song);
+                }
+                catch
+                {
+                    MessageBox.Show("Error on saving video. Try restarting the program.");
+                }
+            }
+
+            // the List<Song> "songs" now contains all the songs in the "tracks" folder
+
+            TracksView.ItemsSource = songs;
         }
 
     }
