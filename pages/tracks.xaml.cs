@@ -18,6 +18,9 @@ using Xabe.FFmpeg;
 using FFMpegCore;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
+using NAudio.Wave;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Audio_Controller.pages
 {
@@ -26,19 +29,33 @@ namespace Audio_Controller.pages
     /// </summary>
     public partial class tracks : Page
     {
-        public ObservableCollection<Song> Songs { get; set; }
         public tracks()
         {
             InitializeComponent();
 
-            // add songs to the listview
-            Songs = new ObservableCollection<Song>
+            string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            if (currentPath.Contains("bin\\Debug"))
             {
-                new Song("Name 1", "3:25"),
-                new Song("Name 2", "4:12"),
-                new Song("Name 3", "2:18"),
-            };
-            TracksView.ItemsSource = Songs;
+                currentPath = currentPath.Replace("bin\\Debug", "");
+            }
+
+            // add songs to the listview
+            string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
+            List<Song> songs = new List<Song>();
+
+            foreach (string filePath in mp3Files)
+            {
+                string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
+                Mp3FileReader reader = new Mp3FileReader(filePath);
+                TimeSpan duration = reader.TotalTime;
+
+                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
+                songs.Add(song);
+            }
+
+            // the List<Song> "songs" now contains all the songs in the "tracks" folder
+
+            TracksView.ItemsSource = songs;
         }
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -78,8 +95,8 @@ namespace Audio_Controller.pages
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 string fileName = Path.GetFileName(files[0]);
-                string filePath = Path.GetDirectoryName(files[0]) + "\\"+ fileName;;
-                FileUpload_Btn.Content = "Uploading "+fileName+"...";
+                string filePath = Path.GetDirectoryName(files[0]) + "\\" + fileName; ;
+                FileUpload_Btn.Content = "Uploading " + fileName + "...";
                 saveUploadedFile(filePath, fileName);
             }
         }
@@ -92,10 +109,11 @@ namespace Audio_Controller.pages
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
             startInfo.WorkingDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-            startInfo.Arguments = "/C ffmpeg -i "+path+" tracks\\"+fileName.Substring(0, fileName.Length - 4)+".mp3";
+            startInfo.Arguments = "/C ffmpeg -i " + path + " tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3";
             process.StartInfo = startInfo;
             process.Start();
 
         }
+
     }
 }

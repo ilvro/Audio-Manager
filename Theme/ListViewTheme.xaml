@@ -11,7 +11,10 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListViewItem">
-                                <ContentPresenter/>
+                                <Border BorderThickness="0 0 0 0.5" BorderBrush="Gray">
+                                    <ContentPresenter/>
+                                </Border>
+
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -22,7 +25,7 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <DockPanel Margin="4">
+                    <DockPanel Margin="0">
                         <DockPanel.Style>
                             <Style TargetType="DockPanel">
                                 <Style.Triggers>
@@ -37,7 +40,7 @@
                                         AncestorType={x:Type ListBoxItem}},
                                         Path=IsSelected}" Value="True">
 
-                                        <Setter Property="Background" Value="White"/>
+                                        <Setter Property="Background" Value="#dadada"/>
 
                                     </DataTrigger>
                                 </Style.Triggers>
