@@ -61,6 +61,7 @@ namespace Audio_Controller.pages
             {
                 string filePath = openFileDialog.FileName;
                 string fileName = Path.GetFileName(filePath);
+                FileUpload_Btn.Content = "Uploading " + fileName + "...";
                 saveUploadedFile(filePath, fileName);
             }
         }
@@ -90,8 +91,8 @@ namespace Audio_Controller.pages
             startInfo.Arguments = "/C ffmpeg -i \"" + path + "\" \"tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3\"";
             process.StartInfo = startInfo;
             process.Start();
-            MessageBox.Show("/C ffmpeg -i \"" + path + "\" \"tracks\\" + fileName.Substring(0, fileName.Length - 4) + ".mp3\"");
             updateFileList();
+            FileUpload_Btn.Content = "Choose a file or drag it here to upload."; // reset the text
 
         }
 
@@ -128,5 +129,10 @@ namespace Audio_Controller.pages
             TracksView.ItemsSource = songs;
         }
 
+        private void LinkUploadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            linkInput window = new linkInput();
+            window.Show();
+        }
     }
 }

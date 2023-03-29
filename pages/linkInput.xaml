@@ -1,0 +1,26 @@
+﻿<Window x:Class="Audio_Controller.pages.linkInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Audio_Controller.pages"
+        mc:Ignorable="d"
+        Title="linkInput" Height="148.623" Width="458">
+    <Grid Margin="0,0,0,128">
+        <TextBox x:Name="URLTextBox"
+            FontSize="13"
+            FontWeight="Normal"
+            FontFamily="Montserrat"
+            FontStyle="Normal"
+            Background="Transparent"
+            Foreground="Gray"
+            CaretBrush="LightGray"
+            BorderBrush="DarkGray"
+            BorderThickness="0,0,0,2"
+            Opacity="1"
+                 
+            Margin="37,8,33,-32" Panel.ZIndex="2" RenderTransformOrigin="0.5,0.5" Text="Copy and paste an url here." PreviewMouseLeftButtonDown="URLTextBox_PreviewMouseLeftButtonDown"/>
+
+        <Button x:Name="LinkDownloadBtn" Content="Click here to download the audio." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="220" Height="33" Margin="104,55,126,-88" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkDownloadBtn_Click"/>
+    </Grid>
+</Window>

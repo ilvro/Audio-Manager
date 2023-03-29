@@ -20,9 +20,9 @@
                  BorderThickness="0,0,0,2"
                  Opacity="0.8"
                  
-                Margin="0,0,0,537"></TextBox>
+                Margin="0,-14,0,551"></TextBox>
 
-        <Button x:Name="PlaylistBtn" Content="Playlists" HorizontalAlignment="Left" Margin="272,38,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="PlaylistBtn_Click" MouseEnter="PlaylistBtn_MouseEnter" MouseLeave="PlaylistBtn_MouseLeave">
+        <Button x:Name="PlaylistBtn" Content="Playlists" HorizontalAlignment="Left" Margin="271,24,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="PlaylistBtn_Click" MouseEnter="PlaylistBtn_MouseEnter" MouseLeave="PlaylistBtn_MouseLeave">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -45,7 +45,7 @@
 
 
 
-        <Button x:Name="TracksBtn" Content="Tracks" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="TrackBtn_Click" MouseEnter="TracksBtn_MouseEnter" MouseLeave="TracksBtn_MouseLeave">
+        <Button x:Name="TracksBtn" Content="Tracks" HorizontalAlignment="Left" Margin="51,24,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="TrackBtn_Click" MouseEnter="TracksBtn_MouseEnter" MouseLeave="TracksBtn_MouseLeave">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
