@@ -16,6 +16,7 @@ using MediaToolkit;
 using MediaToolkit.Model;
 using VideoLibrary;
 using Path = System.IO.Path;
+using Audio_Controller.pages;
 
 namespace Audio_Controller.pages
 {
@@ -35,9 +36,10 @@ namespace Audio_Controller.pages
             string videoUrl = URLTextBox.Text;
             if (videoUrl.Contains("youtube.com") && videoUrl.Contains("/watch?v="))
             {
+                //downloadVideo(uploadFolder, videoUrl);
                 downloadVideo(uploadFolder, videoUrl);
+                this.Close();
             }
-            this.Close();
         }
 
         private void URLTextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -45,26 +47,33 @@ namespace Audio_Controller.pages
             URLTextBox.Text = "";
         }
 
-        private void downloadVideo(string uploadFolder, string url) // this is kind of slow - there might be a better way to do this
+        private void downloadVideo(string uploadFolder, string url)
         {
-            var youtube = YouTube.Default;
-            var vid = youtube.GetVideo(url);
-            string videopath = Path.Combine(uploadFolder, vid.FullName);
-            File.WriteAllBytes(videopath, vid.GetBytes());
 
-            var inputFile = new MediaFile { Filename = Path.Combine(uploadFolder, vid.FullName) };
-            var outputFile = new MediaFile { Filename = Path.Combine(uploadFolder, $"{vid.FullName}.mp3") };
+            // get file count, works for updating the file list later
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(uploadFolder);
+            int count = dir.GetFiles().Length;
 
-            using (var engine = new Engine())
+            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+            try
             {
-                engine.GetMetadata(inputFile);
-
-
-                engine.Convert(inputFile, outputFile);
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.FileName = "cmd.exe";
+                myProcess.StartInfo.WorkingDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+                myProcess.StartInfo.CreateNoWindow = false;
+                myProcess.StartInfo.Arguments = $"/C yt-dlp.exe --output \"\\tracks\\%(title)s.%(ext)s\" -f bestaudio -x --audio-format mp3 " + url;
+                myProcess.Start(); 
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            tracks tracksPage = new tracks();
+            tracksPage.updateFileList();
 
-
-            File.Delete(Path.Combine(uploadFolder, vid.FullName));
+            System.Threading.Thread.Sleep(5000);
+            tracksPage.updateFileList();
+            
         }
     }
 }
