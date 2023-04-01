@@ -33,6 +33,11 @@ namespace Audio_Controller.pages
         {
             InitializeComponent();
             updateFileList();
+
+            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 5); // 5 seconds
+            timer.Start();
         }
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -109,19 +114,12 @@ namespace Audio_Controller.pages
 
             foreach (string filePath in mp3Files)
             {
-                try
-                {
-                    string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
-                    Mp3FileReader reader = new Mp3FileReader(filePath);
-                    TimeSpan duration = reader.TotalTime;
+                string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
+                Mp3FileReader reader = new Mp3FileReader(filePath);
+                TimeSpan duration = reader.TotalTime;
 
-                    Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
-                    songs.Add(song);
-                }
-                catch
-                {
-                    MessageBox.Show("Error on saving video. Try restarting the program.");
-                }
+                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
+                songs.Add(song);
             }
 
             // the List<Song> "songs" now contains all the songs in the "tracks" folder
@@ -133,6 +131,11 @@ namespace Audio_Controller.pages
         {
             linkInput window = new linkInput();
             window.Show();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            updateFileList();
         }
     }
 }

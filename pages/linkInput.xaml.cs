@@ -36,7 +36,6 @@ namespace Audio_Controller.pages
             string videoUrl = URLTextBox.Text;
             if (videoUrl.Contains("youtube.com") && videoUrl.Contains("/watch?v="))
             {
-                //downloadVideo(uploadFolder, videoUrl);
                 downloadVideo(uploadFolder, videoUrl);
                 this.Close();
             }
@@ -49,11 +48,6 @@ namespace Audio_Controller.pages
 
         private void downloadVideo(string uploadFolder, string url)
         {
-
-            // get file count, works for updating the file list later
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(uploadFolder);
-            int count = dir.GetFiles().Length;
-
             System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
             try
             {
@@ -61,19 +55,53 @@ namespace Audio_Controller.pages
                 myProcess.StartInfo.FileName = "cmd.exe";
                 myProcess.StartInfo.WorkingDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
                 myProcess.StartInfo.CreateNoWindow = false;
-                myProcess.StartInfo.Arguments = $"/C yt-dlp.exe --output \"\\tracks\\%(title)s.%(ext)s\" -f bestaudio -x --audio-format mp3 " + url;
-                myProcess.Start(); 
+                myProcess.StartInfo.Arguments = $"/C yt-dlp.exe --output \"\\tracks\\%(title)s.%(ext)s\" -f bestaudio -x --audio-format mp3 " + url; // download file and output it in the tracks folder as a .mp3
+                myProcess.Start();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            tracks tracksPage = new tracks();
-            tracksPage.updateFileList();
 
-            System.Threading.Thread.Sleep(5000);
-            tracksPage.updateFileList();
+            myProcess.WaitForExit(); // wait until its done to prevent the file from being used by another process
+
             
+            // get the file name
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(uploadFolder);
+            System.IO.FileInfo[] files = dir.GetFiles("*.mp3");
+            System.IO.FileInfo latestFile = files.OrderByDescending(f => f.CreationTime).FirstOrDefault();
+            string fileName = latestFile.FullName;
+
+            while (!File.Exists(fileName) || IsFileLocked(new FileInfo(fileName))) // wait until its not being used by another process
+            {
+                System.Threading.Thread.Sleep(500);
+            }
+           
+        }
+
+        private static bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+                // The file is locked and cannot be accessed
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+
+            // The file is not locked and can be accessed
+            return false;
         }
     }
 }
