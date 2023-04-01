@@ -5,22 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audio_Controller"
         mc:Ignorable="d"
-        Title="MainWindow" Height="590" Width="550" PreviewMouseDown="Window_PreviewMouseDown"
+        Title="MainWindow" Height="686.878" Width="588.781" PreviewMouseDown="Window_PreviewMouseDown"
         ResizeMode="CanMinimize">
     <Grid Margin="0,0,2,0">
-        <TextBox x:Name="line"
-                 FontSize="13"
-                 FontWeight="Normal"
-                 FontFamily="Montserrat"
-                 FontStyle="Normal"
-                 Background="Transparent"
-                 Foreground="Black"
-                 CaretBrush="LightGray"
-                 BorderBrush="DarkGray"
-                 BorderThickness="0,0,0,2"
-                 Opacity="0.8"
-                 
-                Margin="0,-14,0,551"></TextBox>
+        
 
         <Button x:Name="PlaylistBtn" Content="Playlists" HorizontalAlignment="Left" Margin="271,24,0,0" VerticalAlignment="Top" Width="220" Height="44" FontSize="16" Click="PlaylistBtn_Click" MouseEnter="PlaylistBtn_MouseEnter" MouseLeave="PlaylistBtn_MouseLeave">
             <Button.Resources>
