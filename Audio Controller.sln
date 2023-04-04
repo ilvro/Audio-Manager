@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio Manager", "Audio Manager.csproj", "{6B49B955-804E-4FB6-AA21-B4426F935EA6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5945C9F9-A93C-44DE-8075-474A9B50AD11}"
+	ProjectSection(SolutionItems) = preProject
+		images\play_icon.png = images\play_icon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
