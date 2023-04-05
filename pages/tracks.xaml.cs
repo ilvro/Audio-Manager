@@ -135,7 +135,7 @@ namespace Audio_Controller.pages
 
         private void ListView_GotMouseCapture2(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("a");
+            MessageBox.Show("does this work");
         }
 
         private void timer_Tick(object sender, EventArgs e)
