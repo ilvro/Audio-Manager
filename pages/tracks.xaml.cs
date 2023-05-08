@@ -122,7 +122,7 @@ namespace Audio_Controller.pages
                 songs.Add(song);
             }
 
-            // the List<Song> "songs" contains all the songs in the "tracks" folder
+            // the List<Song> "songs" now contains all the songs in the "tracks" folder
 
             TracksView.ItemsSource = songs;
         }
