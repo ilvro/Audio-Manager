@@ -111,14 +111,16 @@ namespace Audio_Controller.pages
 
             string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
             List<Song> songs = new List<Song>();
+            int count = 0;
 
             foreach (string filePath in mp3Files)
             {
+                count += 1;
                 string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
                 Mp3FileReader reader = new Mp3FileReader(filePath);
                 TimeSpan duration = reader.TotalTime;
 
-                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath);
+                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath, count);
                 songs.Add(song);
             }
 

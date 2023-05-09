@@ -74,6 +74,7 @@
                             
                             <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,12,8,12" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"></TextBlock>
                             <TextBlock Text="{Binding Title}" Foreground="Black" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="32,0,0,0"></TextBlock>
+                            <TextBlock Text="{Binding Count}" Foreground="#aaaaaa" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
                         </Grid>
                     </DockPanel>
                 </DataTemplate>
