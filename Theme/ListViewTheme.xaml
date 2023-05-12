@@ -3,20 +3,8 @@
                     xmlns:local="clr-namespace:Audio_Controller"
                     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
-
-
-
-    <Style x:Key="gridPlayButton" TargetType="Button"> <!-- this was supposed to be a ResourceDictionary, but i couldnt make it one so its here-->
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Foreground" Value="LightGray" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
     
     <Style TargetType="ListView" x:Key="ListStyle">
-        <!-- this is from a youtube tutorial. not good at designing uis -->
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
 
@@ -63,15 +51,6 @@
                         </DockPanel.Style>
 
                         <Grid>
-                            
-                            <StackPanel Orientation="Horizontal">
-                                <Button Margin="5 0 0 0" Style="{StaticResource gridPlayButton}" VerticalAlignment="Center" Opacity="0">
-                                    <Icon:PackIconMaterial 
-                                        Kind="Play">
-                                    </Icon:PackIconMaterial>
-                                </Button>
-                            </StackPanel>
-                            
                             <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,12,8,12" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"></TextBlock>
                             <TextBlock Text="{Binding Title}" Foreground="Black" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="32,0,0,0"></TextBlock>
                             <TextBlock Text="{Binding Count}" Foreground="#aaaaaa" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
