@@ -5,9 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Audio_Controller.pages"
       mc:Ignorable="d" 
-      Height="686.878" Width="588.781"
+      Height="700.878" Width="588.781"
       Title="tracks">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
 
     <Grid Name="mainGrid">
@@ -15,6 +22,7 @@
             <ColumnDefinition Width="275*"/>
             <ColumnDefinition Width="275*"/>
         </Grid.ColumnDefinitions>
+
 
         <TextBlock HorizontalAlignment="Left" Margin="25,216,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24" Height="32" Width="112"/>
         <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,253,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="537" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus" Grid.ColumnSpan="2">
@@ -31,11 +39,73 @@
                   ScrollViewer.CanContentScroll="False"
                   ItemsSource="{Binding Songs}"
                   Style="{StaticResource ListStyle}"
-                  x:Name="TracksView" Margin="25,317,27,104" Grid.ColumnSpan="2">
+                  x:Name="TracksView" Margin="25,317,27,130" Grid.ColumnSpan="2"
+                  MouseDoubleClick="TracksView_MouseDoubleClick">
 
         </ListView>
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
+
+        <Slider
+            x:Name="videoProgressBarOld" 
+            Value="0"
+            Minimum="0"
+            Maximum="100" 
+            Margin="37,592,61,92" 
+            Grid.ColumnSpan="2"
+            
+        ></Slider>
+        
+        <Slider x:Name="videoProgressBar"
+        Value="0"
+        Minimum="0"
+        Maximum="100"
+        BorderThickness="0"
+        Margin="37,624,63,72"
+        Background="#E6E6E6"
+        Foreground="#4d4d4d" Grid.ColumnSpan="2">
+            <Slider.Template>
+                <ControlTemplate TargetType="Slider">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260*"/>
+                            <ColumnDefinition Width="229*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Track -->
+                        <Border x:Name="PART_Track"
+                    BorderThickness="0"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="3" Grid.ColumnSpan="2"/>
+
+                        <!-- Selection Range -->
+                        <Border x:Name="PART_SelectionRange"
+                    BorderThickness="0"
+                    Background="{TemplateBinding Foreground}"
+                    CornerRadius="2" Grid.ColumnSpan="2"/>
+
+                        <!-- Thumb -->
+                        <Thumb x:Name="Thumb"
+                        Width="12"
+                        Height="12"
+                        Background="Black"
+                        BorderThickness="0"
+                        Template="{StaticResource SpotifySliderThumbTemplate}"
+                        Margin="232,-5,12,-6"/>
+                    </Grid>
+                </ControlTemplate>
+            </Slider.Template>
+        </Slider>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

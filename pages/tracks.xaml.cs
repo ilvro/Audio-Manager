@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using NAudio.Wave;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Threading;
 
 namespace Audio_Controller.pages
 {
@@ -29,6 +30,7 @@ namespace Audio_Controller.pages
     /// </summary>
     public partial class tracks : Page
     {
+        private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
         public tracks()
         {
             InitializeComponent();
@@ -143,6 +145,18 @@ namespace Audio_Controller.pages
         private void timer_Tick(object sender, EventArgs e)
         {
             updateFileList();
+        }
+
+        private void TracksView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedSong = TracksView.SelectedItem as Song;
+            if (selectedSong != null)
+            {
+                // song has been selected; play it
+                string songPath = selectedSong.Path;
+                mediaPlayer.Open(new Uri(songPath));
+                mediaPlayer.Play();
+            }
         }
     }
 }
