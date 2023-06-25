@@ -158,5 +158,10 @@ namespace Audio_Controller.pages
                 mediaPlayer.Play();
             }
         }
+
+        private void PauseBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

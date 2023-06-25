@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Audio_Controller.pages"
       mc:Ignorable="d" 
-      Height="700.878" Width="588.781"
+      Height="690.878" Width="588.781"
       Title="tracks">
 
     <Page.Resources>
@@ -44,72 +44,54 @@
 
         </ListView>
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="PauseBtn" 
+                HorizontalAlignment="Left"  
+                VerticalAlignment="Top" 
+                Width="34" 
+                Height="30" 
+                Margin="264,612,0,0" 
+                Opacity="1" 
+                Background="Black" 
+                FontSize="12" 
+                Click="PauseBtn_Click" 
+                Grid.ColumnSpan="2" 
+                BorderThickness="0">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#171716" Stroke="#171716" StrokeThickness="{TemplateBinding BorderThickness}" Width="30" Height="30"></Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
 
-        <Slider
-            x:Name="videoProgressBarOld" 
-            Value="0"
-            Minimum="0"
-            Maximum="100" 
-            Margin="37,592,61,92" 
-            Grid.ColumnSpan="2"
-            
-        ></Slider>
-        
-        <Slider x:Name="videoProgressBar"
-        Value="0"
-        Minimum="0"
-        Maximum="100"
-        BorderThickness="0"
-        Margin="37,624,63,72"
-        Background="#E6E6E6"
-        Foreground="#4d4d4d" Grid.ColumnSpan="2">
+        <Slider x:Name="videoProgressBarOld" Value="0" Minimum="0" Maximum="100" Margin="45,594,53,76" Grid.ColumnSpan="2">
             <Slider.Template>
                 <ControlTemplate TargetType="Slider">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260*"/>
-                            <ColumnDefinition Width="229*"/>
-                        </Grid.ColumnDefinitions>
-                        <!-- Track -->
-                        <Border x:Name="PART_Track"
-                    BorderThickness="0"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="3" Grid.ColumnSpan="2"/>
-
-                        <!-- Selection Range -->
-                        <Border x:Name="PART_SelectionRange"
-                    BorderThickness="0"
-                    Background="{TemplateBinding Foreground}"
-                    CornerRadius="2" Grid.ColumnSpan="2"/>
-
-                        <!-- Thumb -->
-                        <Thumb x:Name="Thumb"
-                        Width="12"
-                        Height="12"
-                        Background="Black"
-                        BorderThickness="0"
-                        Template="{StaticResource SpotifySliderThumbTemplate}"
-                        Margin="232,-5,12,-6"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.Row="1" Fill="LightGray" Height="4" VerticalAlignment="Center"/>
+                        <Track Grid.Row="1" x:Name="PART_Track">
+                            <Track.Thumb>
+                                <Thumb x:Name="Thumb">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Ellipse Fill="#171716" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Width="15" Height="15"/>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
                     </Grid>
                 </ControlTemplate>
             </Slider.Template>
         </Slider>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </Grid>
 </Page>
