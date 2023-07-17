@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Audio_Controller.pages" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+      xmlns:classes="clr-namespace:Audio_Controller.classes"
       mc:Ignorable="d" 
       Height="690.878" Width="588.781"
       Title="tracks">
@@ -13,8 +14,11 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <classes:Globals x:Key="globals"/>
         </ResourceDictionary>
     </Page.Resources>
+
+
 
 
     <Grid Name="mainGrid">
@@ -53,9 +57,10 @@
                     <Ellipse Fill="#aaaaaa" Stroke="#aaaaaa" Width="36" Height="36"
                      StrokeThickness="{Binding Path=BorderThickness.Top,
                                                RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
-                    <Icon:PackIconMaterial 
-                Kind="Pause"
+                    <Icon:PackIconMaterial
+                Kind="{Binding Source={StaticResource globals}, Path=PausePlayIcon, UpdateSourceTrigger=PropertyChanged}"
                 VerticalAlignment="Center"
+                DataContext="{Binding Source={StaticResource globals}}"
                 Width="13"
                 Height="13"
                 Margin="11.5 0 0 0"

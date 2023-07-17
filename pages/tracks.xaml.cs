@@ -22,6 +22,9 @@ using NAudio.Wave;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Threading;
+using System.Runtime.CompilerServices;
+using MahApps.Metro.IconPacks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Audio_Controller.pages
 {
@@ -30,17 +33,22 @@ namespace Audio_Controller.pages
     /// </summary>
     public partial class tracks : Page
     {
+        Globals globals = new Globals();
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
         public tracks()
         {
             InitializeComponent();
+            DataContext = new Globals();
             updateFileList();
+
 
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 5); // 5 seconds
             timer.Start();
         }
+
+
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -150,9 +158,9 @@ namespace Audio_Controller.pages
         private void TracksView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selectedSong = TracksView.SelectedItem as Song;
-            if (selectedSong != null)
+            if (selectedSong != null) // song has been selected
             {
-                // song has been selected; play it
+                globals.lastPlayed = selectedSong; // save last played
                 string songPath = selectedSong.Path;
                 mediaPlayer.Open(new Uri(songPath));
                 mediaPlayer.Play();
@@ -161,7 +169,16 @@ namespace Audio_Controller.pages
 
         private void PauseBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (globals.isPaused == false) // pretty sure its bad code?? probably going to fix this
+            {
+                mediaPlayer.Pause();
+                globals.isPaused = true;
+            }
+            else
+            {
+                mediaPlayer.Play();
+                globals.isPaused = false;
+            }
         }
     }
 }
