@@ -6,36 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Audio_Controller.classes
 {
-    public class Globals : INotifyPropertyChanged
+    public class Globals
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public Song lastPlayed { get; set; }
-        private bool _isPaused;
+        public bool isPaused { get; set; }
 
-        public bool isPaused
+        public T GetChildOfType<T>(DependencyObject depObj) where T : DependencyObject
         {
-            get
+            if (depObj == null) return null;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
             {
-                return _isPaused;
-            }
-            set
-            {
-                _isPaused = value;
-                OnPropertyChanged(nameof(isPaused));
-            }
-        }
+                var child = VisualTreeHelper.GetChild(depObj, i);
 
-        public PackIconMaterialKind PausePlayIcon
-        {
-            get { return this.isPaused ? PackIconMaterialKind.Play : PackIconMaterialKind.Pause; }
-        }
+                var result = (child as T) ?? GetChildOfType<T>(child);
+                if (result != null) return result;
+            }
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            return null;
         }
     }
 }

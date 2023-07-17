@@ -35,6 +35,7 @@ namespace Audio_Controller.pages
     {
         Globals globals = new Globals();
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
+
         public tracks()
         {
             InitializeComponent();
@@ -145,11 +146,6 @@ namespace Audio_Controller.pages
             window.Show();
         }
 
-        private void ListView_GotMouseCapture2(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("does this work");
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             updateFileList();
@@ -160,24 +156,45 @@ namespace Audio_Controller.pages
             var selectedSong = TracksView.SelectedItem as Song;
             if (selectedSong != null) // song has been selected
             {
-                globals.lastPlayed = selectedSong; // save last played
                 string songPath = selectedSong.Path;
                 mediaPlayer.Open(new Uri(songPath));
                 mediaPlayer.Play();
+                globals.lastPlayed = selectedSong; // save last played
+                globals.isPaused = false;
+                updatePlayBtn();
             }
         }
 
         private void PauseBtn_Click(object sender, RoutedEventArgs e)
         {
+            //PackIconMaterial iconMaterial = PauseBtn.FindName("PackIconMaterial") as PackIconMaterial;
+            var iconMaterial = globals.GetChildOfType<PackIconMaterial>(PauseBtn);
+
             if (globals.isPaused == false) // pretty sure its bad code?? probably going to fix this
             {
                 mediaPlayer.Pause();
                 globals.isPaused = true;
-            }
+                updatePlayBtn();
+                
+            }       
             else
             {
                 mediaPlayer.Play();
                 globals.isPaused = false;
+                updatePlayBtn();
+            }
+        }
+
+        private void updatePlayBtn()
+        {
+            var iconMaterial = globals.GetChildOfType<PackIconMaterial>(PauseBtn);
+            if (globals.isPaused)
+            {
+                iconMaterial.Kind = PackIconMaterialKind.Play;
+            }
+            else
+            {
+                iconMaterial.Kind = PackIconMaterialKind.Pause;
             }
         }
     }

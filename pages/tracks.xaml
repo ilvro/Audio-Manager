@@ -52,18 +52,19 @@
         
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="PauseBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="46" Margin="264,612,0,0" Opacity="1" Background="Transparent" FontSize="12" Click="PauseBtn_Click" Grid.ColumnSpan="2" BorderThickness="0">
-            <Border CornerRadius="100" Background="#aaaaaa">
+            <Border CornerRadius="100" Background="Black">
                 <Grid>
-                    <Ellipse Fill="#aaaaaa" Stroke="#aaaaaa" Width="36" Height="36"
+                    <Ellipse Fill="Black" Stroke="Black" Width="36" Height="36"
                      StrokeThickness="{Binding Path=BorderThickness.Top,
                                                RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
                     <Icon:PackIconMaterial
-                Kind="{Binding Source={StaticResource globals}, Path=PausePlayIcon, UpdateSourceTrigger=PropertyChanged}"
-                VerticalAlignment="Center"
                 DataContext="{Binding Source={StaticResource globals}}"
+                Kind="Pause"
+                VerticalAlignment="Center"
                 Width="13"
                 Height="13"
                 Margin="11.5 0 0 0"
+                        Foreground="White"
                 Panel.ZIndex="2"/>
                 </Grid>
             </Border>
@@ -89,7 +90,7 @@
                                 <Thumb x:Name="Thumb">
                                     <Thumb.Template>
                                         <ControlTemplate TargetType="Thumb">
-                                            <Ellipse Fill="#171716" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Width="15" Height="15"/>
+                                            <Ellipse Fill="#aaaaaa" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Width="15" Height="15"/>
                                         </ControlTemplate>
                                     </Thumb.Template>
                                 </Thumb>
