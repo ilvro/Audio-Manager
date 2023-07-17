@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Audio_Controller.pages"
+      xmlns:local="clr-namespace:Audio_Controller.pages" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
       mc:Ignorable="d" 
       Height="690.878" Width="588.781"
       Title="tracks">
@@ -43,28 +43,30 @@
                   MouseDoubleClick="TracksView_MouseDoubleClick">
 
         </ListView>
+       
+        
+        
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="PauseBtn" 
-                HorizontalAlignment="Left"  
-                VerticalAlignment="Top" 
-                Width="34" 
-                Height="30" 
-                Margin="264,612,0,0" 
-                Opacity="1" 
-                Background="Black" 
-                FontSize="12" 
-                Click="PauseBtn_Click" 
-                Grid.ColumnSpan="2" 
-                BorderThickness="0">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <Ellipse Fill="#171716" Stroke="#171716" StrokeThickness="{TemplateBinding BorderThickness}" Width="30" Height="30"></Ellipse>
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-
+        <Button x:Name="PauseBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="46" Margin="264,612,0,0" Opacity="1" Background="Transparent" FontSize="12" Click="PauseBtn_Click" Grid.ColumnSpan="2" BorderThickness="0">
+            <Border CornerRadius="100" Background="#aaaaaa">
+                <Grid>
+                    <Ellipse Fill="#aaaaaa" Stroke="#aaaaaa" Width="36" Height="36"
+                     StrokeThickness="{Binding Path=BorderThickness.Top,
+                                               RelativeSource={RelativeSource AncestorType={x:Type Button}}}"/>
+                    <Icon:PackIconMaterial 
+                Kind="Pause"
+                VerticalAlignment="Center"
+                Width="13"
+                Height="13"
+                Margin="11.5 0 0 0"
+                Panel.ZIndex="2"/>
+                </Grid>
+            </Border>
         </Button>
+
+
+
+
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
 
         <Slider x:Name="videoProgressBarOld" Value="0" Minimum="0" Maximum="100" Margin="45,594,53,76" Grid.ColumnSpan="2">
