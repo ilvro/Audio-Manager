@@ -188,6 +188,8 @@ namespace Audio_Controller.pages
         private void updatePlayBtn()
         {
             var iconMaterial = globals.GetChildOfType<PackIconMaterial>(PauseBtn);
+            PauseBtn.Width = 44;
+            PauseBtn.Height = 44;
             if (globals.isPaused)
             {
                 iconMaterial.Kind = PackIconMaterialKind.Play;
@@ -196,6 +198,17 @@ namespace Audio_Controller.pages
             {
                 iconMaterial.Kind = PackIconMaterialKind.Pause;
             }
+        }
+        private void PackIconMaterial_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PauseBtn.Width = 42;
+            PauseBtn.Height = 42;
+        }
+
+        private void PauseBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PauseBtn.Width = 42;
+            PauseBtn.Height = 42;
         }
     }
 }
