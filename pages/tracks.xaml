@@ -9,15 +9,6 @@
       Height="690.878" Width="588.781"
       Title="tracks">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <classes:Globals x:Key="globals"/>
-        </ResourceDictionary>
-    </Page.Resources>
-
 
 
 
@@ -43,80 +34,14 @@
                   ScrollViewer.CanContentScroll="False"
                   ItemsSource="{Binding Songs}"
                   Style="{StaticResource ListStyle}"
-                  x:Name="TracksView" Margin="25,317,27,130" Grid.ColumnSpan="2"
-                  MouseDoubleClick="TracksView_MouseDoubleClick">
+                  x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
+                  MouseDoubleClick="TracksView_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}">
 
         </ListView>
-       
+
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="PauseBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="44" Height="44" Margin="264,612,0,0" Opacity="1" Background="Black" Foreground="Transparent" FontSize="12" Click="PauseBtn_Click" Grid.ColumnSpan="2" BorderThickness="0" PreviewMouseLeftButtonDown="PauseBtn_PreviewMouseLeftButtonDown">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="Black"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="100">
-                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="100"/>
-                </Style>
-            </Button.Resources>
-
-            <Border CornerRadius="100" Background="Transparent">
-                <Grid>
-                    <Icon:PackIconMaterial 
-                                   DataContext="{Binding Source={StaticResource globals}}"
-                                   Kind="Pause"
-                                   VerticalAlignment="Center"
-                                   Width="13"
-                                   Height="13"
-                                   Margin="0 0 0 0"
-                                   Foreground="White"
-                                   Background="Transparent"/>
-                </Grid>
-            </Border>
-        </Button>
-
-
-
-
-
+        
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
-
-        <Slider x:Name="videoProgressBarOld" Value="0" Minimum="0" Maximum="100" Margin="45,594,53,76" Grid.ColumnSpan="2">
-            <Slider.Template>
-                <ControlTemplate TargetType="Slider">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="LightGray" Height="4" VerticalAlignment="Center"/>
-                        <Track Grid.Row="1" x:Name="PART_Track">
-                            <Track.Thumb>
-                                <Thumb x:Name="Thumb">
-                                    <Thumb.Template>
-                                        <ControlTemplate TargetType="Thumb">
-                                            <Ellipse Fill="#aaaaaa" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Width="15" Height="15"/>
-                                        </ControlTemplate>
-                                    </Thumb.Template>
-                                </Thumb>
-                            </Track.Thumb>
-                        </Track>
-                    </Grid>
-                </ControlTemplate>
-            </Slider.Template>
-        </Slider>
 
     </Grid>
 </Page>

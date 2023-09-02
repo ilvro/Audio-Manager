@@ -11,14 +11,12 @@ namespace Audio_Controller.classes
         public string Title { get; set; }
         public string Duration { get; set; }
         public string Path { get; set; }
-        public int Count { get; set; }
 
-        public Song(string title, string duration, string path, int count)
+        public Song(string title, string duration, string path)
         {
             Title = title;
             Duration = duration;
             Path = path;
-            Count = count;
         }
     }
 }

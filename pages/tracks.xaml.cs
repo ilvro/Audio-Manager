@@ -24,7 +24,6 @@ using System.Reflection;
 using System.Windows.Threading;
 using System.Runtime.CompilerServices;
 using MahApps.Metro.IconPacks;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Audio_Controller.pages
 {
@@ -122,16 +121,14 @@ namespace Audio_Controller.pages
 
             string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
             List<Song> songs = new List<Song>();
-            int count = 0;
 
             foreach (string filePath in mp3Files)
             {
-                count += 1;
                 string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
                 Mp3FileReader reader = new Mp3FileReader(filePath);
                 TimeSpan duration = reader.TotalTime;
 
-                Song song = new Song(fileName, duration.ToString("hh\\:mm\\:ss"), filePath, count);
+                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath);
                 songs.Add(song);
             }
 
@@ -161,49 +158,7 @@ namespace Audio_Controller.pages
                 mediaPlayer.Play();
                 globals.lastPlayed = selectedSong; // save last played
                 globals.isPaused = false;
-                updatePlayBtn();
             }
-        }
-
-        private void PauseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //PackIconMaterial iconMaterial = PauseBtn.FindName("PackIconMaterial") as PackIconMaterial;
-            var iconMaterial = globals.GetChildOfType<PackIconMaterial>(PauseBtn);
-
-            if (globals.isPaused == false) // pretty sure its bad code?? probably going to fix this
-            {
-                mediaPlayer.Pause();
-                globals.isPaused = true;
-                updatePlayBtn();
-                
-            }       
-            else
-            {
-                mediaPlayer.Play();
-                globals.isPaused = false;
-                updatePlayBtn();
-            }
-        }
-
-        private void updatePlayBtn()
-        {
-            var iconMaterial = globals.GetChildOfType<PackIconMaterial>(PauseBtn);
-            PauseBtn.Width = 44;
-            PauseBtn.Height = 44;
-            if (globals.isPaused)
-            {
-                iconMaterial.Kind = PackIconMaterialKind.Play;
-            }
-            else
-            {
-                iconMaterial.Kind = PackIconMaterialKind.Pause;
-            }
-        }
-
-        private void PauseBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            PauseBtn.Width = 42;
-            PauseBtn.Height = 42;
         }
     }
 }
