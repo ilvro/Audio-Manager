@@ -37,11 +37,11 @@ namespace Audio_Controller.pages
 
         Globals globals = new Globals();
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
+        
 
         public tracks()
         {
             InitializeComponent();
-            TracksView.AddHandler(Button.ClickEvent, new RoutedEventHandler(PlayBtn_Click));
             DataContext = globals;
 
             updateFileList();
@@ -157,40 +157,5 @@ namespace Audio_Controller.pages
         {
             updateFileList();
         }
-
-        private void TracksView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var selectedSong = TracksView.SelectedItem as Song;
-            if (selectedSong != null) // song has been selected
-            {
-                string songPath = selectedSong.Path;
-                mediaPlayer.Open(new Uri(songPath));
-                mediaPlayer.Play();
-                globals.lastPlayed = selectedSong; // save last played
-                globals.isPaused = false;
-            }
-        }
-
-        private void PlayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            // Handle the button click here
-            Button playButton = sender as Button;
-            MessageBox.Show("1");
-            if (playButton != null)
-            {
-                MessageBox.Show("2");
-                Song selectedSong = playButton.DataContext as Song;
-                MessageBox.Show(selectedSong.ToString());
-                if (selectedSong != null)
-                {
-                    string songPath = selectedSong.Path;
-                    mediaPlayer.Open(new Uri(songPath));
-                    mediaPlayer.Play();
-                    globals.lastPlayed = selectedSong; // save last played
-                    globals.isPaused = false;
-                }
-            }
-        }
-
     }
 }

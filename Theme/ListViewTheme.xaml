@@ -1,10 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Audio_Controller"
-                    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+                    xmlns:classes="clr-namespace:Audio_Controller.classes"
+                    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:theme="clr-namespace:Audio_Controller.Theme"
+                    x:Class="Audio_Controller.Theme.ListViewTheme"
+                    >
     
-
-
     <Style TargetType="ListView" x:Key="ListStyle">
         <Setter Property="BorderThickness" Value="0"/>
 
@@ -31,7 +32,9 @@
                         <Grid>
                             <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,0,8,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="14"></TextBlock>
                             <TextBlock Text="{Binding Title}" Foreground="#625b65" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-28,0,0"></TextBlock>
-                            <Button Width="18" Height="16" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-10,14,0">
+                            <Button x:Name="PlayBtn" Width="18" Height="16" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-10,14,0" Click="PlayBtn_Click"
+        
+                                   >
                                 <Icon:PackIconMaterial Kind="Play" Margin="0 -1.15 0 0" Foreground="#828284"/>
                             </Button>
                             <TextBox x:Name="tagAdder" Text="+Add" TextAlignment="Center" FontStyle="Italic" FontSize="14" Foreground="#e2138d" Background="Transparent" BorderBrush="#afafaf" BorderThickness="0.5" Width="50" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,16,0,0">

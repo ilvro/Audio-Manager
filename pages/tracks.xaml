@@ -40,7 +40,7 @@
                   ItemsSource="{Binding Songs}"
                   Style="{StaticResource ListStyle}"
                   x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
-                  MouseDoubleClick="TracksView_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}">
+                  d:ItemsSource="{d:SampleData ItemCount=5}">
 
             
             
