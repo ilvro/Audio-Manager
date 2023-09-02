@@ -9,8 +9,13 @@
       Height="690.878" Width="588.781"
       Title="tracks">
 
-
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Theme/ListViewTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid Name="mainGrid">
         <Grid.ColumnDefinitions>
@@ -37,10 +42,12 @@
                   x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
                   MouseDoubleClick="TracksView_MouseDoubleClick" d:ItemsSource="{d:SampleData ItemCount=5}">
 
+            
+            
         </ListView>
-
-        <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
         
+        <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
+
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
 
     </Grid>

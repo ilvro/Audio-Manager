@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Audio_Controller"
                     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+    
 
 
     <Style TargetType="ListView" x:Key="ListStyle">
@@ -28,9 +29,20 @@
                 <DataTemplate>
                     <Border Margin="2" Height="60" Background="#e9e8e9" CornerRadius="5">
                         <Grid>
-                            <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,12,8,12" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"></TextBlock>
+                            <TextBlock Text="{Binding Duration}" Foreground="Black" Margin="0,0,8,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="14"></TextBlock>
                             <TextBlock Text="{Binding Title}" Foreground="#625b65" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-28,0,0"></TextBlock>
-                            
+                            <Button Width="18" Height="16" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,-10,14,0">
+                                <Icon:PackIconMaterial Kind="Play" Margin="0 -1.15 0 0" Foreground="#828284"/>
+                            </Button>
+                            <TextBox x:Name="tagAdder" Text="+Add" TextAlignment="Center" FontStyle="Italic" FontSize="14" Foreground="#e2138d" Background="Transparent" BorderBrush="#afafaf" BorderThickness="0.5" Width="50" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,16,0,0">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="3"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="BorderBrush" Value="#afafaf"/>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
                         </Grid>
                     </Border>
                 </DataTemplate>
