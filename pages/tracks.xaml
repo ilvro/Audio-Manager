@@ -73,7 +73,7 @@
 
             <Border CornerRadius="100" Background="Transparent">
                 <Grid>
-                    <Icon:PackIconMaterial PreviewMouseLeftButtonDown="PackIconMaterial_PreviewMouseLeftButtonDown"
+                    <Icon:PackIconMaterial 
                                    DataContext="{Binding Source={StaticResource globals}}"
                                    Kind="Pause"
                                    VerticalAlignment="Center"

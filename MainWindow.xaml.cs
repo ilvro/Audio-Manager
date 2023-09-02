@@ -26,7 +26,7 @@ namespace Audio_Controller
         public MainWindow()
         {
             InitializeComponent();
-            this.Title = "Audio Manager";
+            this.Title = "Jukebox";
 
             // start with the main page, tracks
             Main.NavigationService.Navigate(new Uri("pages/tracks.xaml", UriKind.Relative));
