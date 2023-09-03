@@ -18,10 +18,14 @@
     </Page.Resources>
 
     <Grid Name="mainGrid">
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="275*"/>
             <ColumnDefinition Width="275*"/>
         </Grid.ColumnDefinitions>
+
+     
 
 
         <TextBlock HorizontalAlignment="Left" Margin="25,216,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24" Height="32" Width="112"/>

@@ -28,13 +28,16 @@ namespace Audio_Controller.pages
 
         Globals globals = new Globals();
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
-        
+        private SongPlayer songPlayer; // Declare the SongPlayer instance
 
         public tracks()
         {
             InitializeComponent();
             updateFileList();
+            songPlayer = new SongPlayer();
+            DataContext = songPlayer;
             DataContext = globals;
+            this.Resources.Add("SongPlayerResource", songPlayer);
 
 
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -122,11 +125,11 @@ namespace Audio_Controller.pages
                 string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
                 Mp3FileReader reader = new Mp3FileReader(filePath);
                 TimeSpan duration = reader.TotalTime;
-                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath);
+                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer);
 
                 if (duration.ToString("mm\\:ss").StartsWith("0"))
                 {
-                    song = new Song(fileName, duration.ToString("m\\:ss"), filePath);
+                    song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer);
                 }
 
                 songs.Add(song);
