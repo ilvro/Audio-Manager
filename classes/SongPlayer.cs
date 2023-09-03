@@ -25,16 +25,30 @@ namespace Audio_Controller.classes
             }
         }
 
-        private string playbackPosition;
-        public string PlaybackPosition
+        private TimeSpan currentDuration;
+        public TimeSpan CurrentDuration
         {
-            get { return playbackPosition; }
+            get { return currentDuration; }
             set
             {
-                if (playbackPosition != value)
+                if (currentDuration != value)
                 {
-                    playbackPosition = value;
-                    OnPropertyChanged(nameof(PlaybackPosition));
+                    currentDuration = value;
+                    OnPropertyChanged(nameof(CurrentDuration));
+                }
+            }
+        }
+
+        private TimeSpan totalDuration;
+        public TimeSpan TotalDuration
+        {
+            get { return totalDuration; }
+            set
+            {
+                if (totalDuration != value)
+                {
+                    totalDuration = value;
+                    OnPropertyChanged(nameof(TotalDuration));
                 }
             }
         }
@@ -44,7 +58,7 @@ namespace Audio_Controller.classes
         public SongPlayer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // Update every second
+            timer.Interval = TimeSpan.FromSeconds(0.45); // Update every second
             timer.Tick += Timer_Tick;
         }
 
@@ -64,11 +78,12 @@ namespace Audio_Controller.classes
             if (mediaPlayer.NaturalDuration.HasTimeSpan)
             {
                 TimeSpan currentPosition = mediaPlayer.Position;
-                TimeSpan totalDuration = mediaPlayer.NaturalDuration.TimeSpan;
-                PlaybackPosition = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}";
+                TotalDuration = mediaPlayer.NaturalDuration.TimeSpan; // Update TotalDuration
+
+                CurrentDuration = currentPosition; // Update CurrentDuration
 
                 // Check if the song has ended
-                if (currentPosition >= totalDuration)
+                if (currentPosition >= TotalDuration)
                 {
                     mediaPlayer.Stop();
                     timer.Stop();
