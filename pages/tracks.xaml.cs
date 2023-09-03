@@ -26,7 +26,7 @@ namespace Audio_Controller.pages
     {
 
 
-        Globals globals = new Globals();
+        Globals globals = App.GlobalsInstance;
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
         private SongPlayer songPlayer; // Declare the SongPlayer instance
 
@@ -35,7 +35,6 @@ namespace Audio_Controller.pages
             InitializeComponent();
             updateFileList();
             songPlayer = new SongPlayer();
-            DataContext = songPlayer;
             DataContext = globals;
             this.Resources.Add("SongPlayerResource", songPlayer);
 
@@ -148,10 +147,14 @@ namespace Audio_Controller.pages
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            updateFileList();
+            if (globals.currentlyPlaying.Count == 0)
+            {
+                updateFileList();
+            }
+            
         }
 
-        
+
 
 
         private static T FindVisualChild<T>(DependencyObject parent, string name) where T : FrameworkElement
@@ -172,7 +175,7 @@ namespace Audio_Controller.pages
             return null;
         }
 
-        
+
 
 
     }

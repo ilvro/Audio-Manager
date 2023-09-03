@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 using NAudio.Wave;
@@ -58,7 +59,7 @@ namespace Audio_Controller.classes
         public SongPlayer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(0.45); // Update every second
+            timer.Interval = TimeSpan.FromSeconds(1); // Update every second
             timer.Tick += Timer_Tick;
         }
 
@@ -87,6 +88,9 @@ namespace Audio_Controller.classes
                 {
                     mediaPlayer.Stop();
                     timer.Stop();
+                    CurrentSong.Duration = CurrentSong.OriginalDuration;
+
+                    //MessageBox.Show($"{TotalDuration } | {CurrentSong.OriginalDuration}");
                 }
             }
         }

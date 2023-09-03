@@ -60,7 +60,7 @@ namespace Audio_Controller.pages
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(e.Message);
             }
 
             myProcess.WaitForExit(); // wait until its done to prevent the file from being used by another process

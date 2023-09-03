@@ -12,6 +12,7 @@ namespace Audio_Controller.classes
 {
     public class Globals
     {
+        public List<Song> currentlyPlaying { get; set; } = new List<Song>();
         public Song lastPlayed { get; set; }
         public bool isPaused { get; set; }
 

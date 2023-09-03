@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Audio_Controller.classes;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +14,6 @@ namespace Audio_Controller
     /// </summary>
     public partial class App : Application
     {
-
+        public static Globals GlobalsInstance { get; } = new Globals();
     }
 }
