@@ -4,16 +4,7 @@
              xmlns:local="clr-namespace:Audio_Controller"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-    
-            
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Theme/ListViewTheme.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-        
-        
-
+   
         
         
     </Application.Resources>

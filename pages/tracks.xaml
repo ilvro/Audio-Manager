@@ -12,7 +12,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Theme/ListViewTheme.xaml" />
+                <ResourceDictionary Source="../classes/ListViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -36,16 +36,14 @@
         <Button x:Name="FileUpload_Btn" Content="Choose a file or drag it here to upload." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="469" Height="59" Margin="37,105,43,0" Opacity="0.5" Background="#d7f4f4" FontSize="16" AllowDrop="True" Click="FileUpload_BtnClick" Drop="FileUpload_BtnDrop" Grid.ColumnSpan="2"/>
 
         <ListView Background="White"
-                  ScrollViewer.CanContentScroll="False"
-                  ItemsSource="{Binding Songs}"
-                  Style="{StaticResource ListStyle}"
-                  x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
-                  d:ItemsSource="{d:SampleData ItemCount=5}">
-
-            
-            
+              ScrollViewer.CanContentScroll="False"
+              ItemsSource="{Binding Songs}"
+              Style="{StaticResource ListStyle}"
+              x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
+              d:ItemsSource="{d:SampleData ItemCount=5}"
+              >
         </ListView>
-        
+
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
