@@ -13,7 +13,7 @@ namespace Audio_Controller.Theme
     public partial class ListViewTheme
     {
         Globals globals = new Globals();
-        private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
+        private MediaPlayer mediaPlayer = new MediaPlayer();
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
