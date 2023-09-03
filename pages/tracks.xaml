@@ -40,8 +40,7 @@
               ItemsSource="{Binding Songs}"
               Style="{StaticResource ListStyle}"
               x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
-              d:ItemsSource="{d:SampleData ItemCount=5}"
-              >
+              d:ItemsSource="{d:SampleData ItemCount=5}">
         </ListView>
 
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
