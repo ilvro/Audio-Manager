@@ -89,8 +89,6 @@ namespace Audio_Controller.classes
                     mediaPlayer.Stop();
                     timer.Stop();
                     CurrentSong.Duration = CurrentSong.OriginalDuration;
-
-                    //MessageBox.Show($"{TotalDuration } | {CurrentSong.OriginalDuration}");
                 }
             }
         }

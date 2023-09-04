@@ -67,7 +67,7 @@ namespace Audio_Controller.classes
                 // calculate the new duration string and assign it to Duration
                 TimeSpan currentPosition = songPlayer.CurrentDuration;
                 TimeSpan totalDuration = songPlayer.TotalDuration;
-                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}";
+                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}"; // displaying it this way may cause a time discrepancy
             }
         }
 
