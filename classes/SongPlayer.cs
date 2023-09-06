@@ -9,6 +9,7 @@ namespace Audio_Controller.classes
 {
     public class SongPlayer : INotifyPropertyChanged
     {
+        Globals globals = App.GlobalsInstance;
         private MediaPlayer mediaPlayer = new MediaPlayer();
         private DispatcherTimer timer;
 
@@ -68,9 +69,24 @@ namespace Audio_Controller.classes
             if (song != null)
             {
                 CurrentSong = song;
+                globals.currentlyPaused.Remove(song);
+                globals.currentlyPlaying.Add(song);
                 mediaPlayer.Open(new Uri(song.Path));
                 mediaPlayer.Play();
                 timer.Start();
+            }
+        }
+
+        public void PauseSong(Song song)
+        {
+            if (song != null)
+            {
+                CurrentSong = song;
+                globals.currentlyPaused.Add(song);
+                globals.currentlyPlaying.Remove(song);
+                mediaPlayer.Open(new Uri(song.Path));
+                mediaPlayer.Pause();
+                timer.Stop();
             }
         }
 

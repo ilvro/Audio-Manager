@@ -46,10 +46,18 @@ namespace Audio_Controller.classes
             songPlayer.PropertyChanged += OnSongPlayerPropertyChanged;
         }
 
+
+        // change song speed: mediaPlayer.PlaybackSession.PlaybackRate = 2.0;
         private void Play(object obj)
         {
-            globals.currentlyPlaying.Add(this);
-            songPlayer.PlaySong(this);
+            if (!globals.currentlyPlaying.Contains(this))
+            {
+                songPlayer.PlaySong(this);
+            }
+            else
+            {
+                songPlayer.PauseSong(this);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -67,7 +75,7 @@ namespace Audio_Controller.classes
                 // calculate the new duration string and assign it to Duration
                 TimeSpan currentPosition = songPlayer.CurrentDuration;
                 TimeSpan totalDuration = songPlayer.TotalDuration;
-                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}"; // displaying it this way may cause a time discrepancy
+                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}"; // displaying it this way may cause a time discrepancy of 1 second, needs fixing
             }
         }
 
