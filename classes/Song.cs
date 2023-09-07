@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using NAudio.Wave;
+using Xabe.FFmpeg;
 
 namespace Audio_Controller.classes
 {
@@ -16,6 +17,7 @@ namespace Audio_Controller.classes
         public string Title { get; set; }
         public string Path { get; set; }
         public string OriginalDuration { get; set; }
+        private TimeSpan playbackPosition;
         private string duration;
 
         public string Duration
@@ -69,15 +71,32 @@ namespace Audio_Controller.classes
 
         private void OnSongPlayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "CurrentDuration")
+            if (e.PropertyName == "CurrentDuration" && songPlayer.CurrentSong == this)
             {
-                // update the Duration property here based on the current position
-                // calculate the new duration string and assign it to Duration
+                // Update the Duration property here based on the current position
                 TimeSpan currentPosition = songPlayer.CurrentDuration;
                 TimeSpan totalDuration = songPlayer.TotalDuration;
-                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}"; // displaying it this way may cause a time discrepancy of 1 second, needs fixing
+                Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}";
+            }
+
+            // Store the playback position whenever it changes
+            if (e.PropertyName == "CurrentPosition" && songPlayer.CurrentSong == this)
+            {
+                playbackPosition = songPlayer.mediaPlayer.Position; // equivalent to currentPosition
             }
         }
+
+        public TimeSpan GetPlaybackPosition()
+        {
+            return playbackPosition;
+        }
+
+        public void SetPlaybackPosition(TimeSpan position)
+        {
+            playbackPosition = position;
+        }
+
+
 
     }
 }

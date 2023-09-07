@@ -10,7 +10,7 @@ namespace Audio_Controller.classes
     public class SongPlayer : INotifyPropertyChanged
     {
         Globals globals = App.GlobalsInstance;
-        private MediaPlayer mediaPlayer = new MediaPlayer();
+        public MediaPlayer mediaPlayer = new MediaPlayer();
         private DispatcherTimer timer;
 
         private Song currentSong;
@@ -72,6 +72,11 @@ namespace Audio_Controller.classes
                 globals.currentlyPaused.Remove(song);
                 globals.currentlyPlaying.Add(song);
                 mediaPlayer.Open(new Uri(song.Path));
+                // restore the playback position if the song was paused
+                if (song.GetPlaybackPosition() != TimeSpan.Zero)
+                {
+                    mediaPlayer.Position = song.GetPlaybackPosition();
+                }
                 mediaPlayer.Play();
                 timer.Start();
             }
@@ -82,13 +87,17 @@ namespace Audio_Controller.classes
             if (song != null)
             {
                 CurrentSong = song;
+
+                // Store the playback position when pausing
+                song.SetPlaybackPosition(mediaPlayer.Position);
+
                 globals.currentlyPaused.Add(song);
                 globals.currentlyPlaying.Remove(song);
-                mediaPlayer.Open(new Uri(song.Path));
                 mediaPlayer.Pause();
                 timer.Stop();
             }
         }
+
 
         private void Timer_Tick(object sender, EventArgs e)
         {
