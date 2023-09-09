@@ -55,6 +55,8 @@ namespace Audio_Controller.classes
             }
         }
 
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public SongPlayer()
@@ -105,7 +107,6 @@ namespace Audio_Controller.classes
             {
                 TimeSpan currentPosition = mediaPlayer.Position;
                 TotalDuration = mediaPlayer.NaturalDuration.TimeSpan; // Update TotalDuration
-
                 CurrentDuration = currentPosition; // Update CurrentDuration
 
                 // Check if the song has ended

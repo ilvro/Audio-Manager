@@ -17,6 +17,34 @@ namespace Audio_Controller.classes
         public string Title { get; set; }
         public string Path { get; set; }
         public string OriginalDuration { get; set; }
+
+        private static double totalDuration; // totalDuration is just OriginalDuration but as a TimeSpan instead of string
+        public double TotalDuration
+        {
+            get { return totalDuration; }
+            set
+            {
+                if (totalDuration != value)
+                {
+                    totalDuration = value;
+                    OnPropertyChanged(nameof(TotalDuration));
+                }
+            }
+        }
+
+        private static double currentPosition; // currentPosition is Duration but as a TimeSpan instead of string
+        public double CurrentPosition
+        {
+            get { return currentPosition; }
+            set
+            {
+                if (currentPosition != value)
+                {
+                    currentPosition = value;
+                    OnPropertyChanged(nameof(CurrentPosition));
+                }
+            }
+        }
         private TimeSpan playbackPosition;
         private string duration;
 
@@ -32,7 +60,6 @@ namespace Audio_Controller.classes
                 }
             }
         }
-       
 
         public Song(string title, string duration, string path, SongPlayer player)
         {
