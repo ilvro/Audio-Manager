@@ -18,7 +18,7 @@ namespace Audio_Controller.classes
         public string Path { get; set; }
         public string OriginalDuration { get; set; }
 
-        private static double totalDuration; // totalDuration is just OriginalDuration but as a TimeSpan instead of string
+        private static double totalDuration; // totalDuration is just OriginalDuration but as a double instead of string
         public double TotalDuration
         {
             get { return totalDuration; }
@@ -32,7 +32,7 @@ namespace Audio_Controller.classes
             }
         }
 
-        private static double currentPosition; // currentPosition is Duration but as a TimeSpan instead of string
+        private static double currentPosition; // currentPosition is Duration but as a double instead of string
         public double CurrentPosition
         {
             get { return currentPosition; }
