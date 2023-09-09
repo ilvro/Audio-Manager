@@ -73,13 +73,13 @@ namespace Audio_Controller.classes
         {
             if (e.PropertyName == "CurrentDuration" && songPlayer.CurrentSong == this)
             {
-                // Update the Duration property here based on the current position
+                // update the Duration property here based on the current position
                 TimeSpan currentPosition = songPlayer.CurrentDuration;
                 TimeSpan totalDuration = songPlayer.TotalDuration;
                 Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}";
             }
 
-            // Store the playback position whenever it changes
+            // store the playback position whenever it changes
             if (e.PropertyName == "CurrentPosition" && songPlayer.CurrentSong == this)
             {
                 playbackPosition = songPlayer.mediaPlayer.Position; // equivalent to currentPosition
@@ -95,8 +95,5 @@ namespace Audio_Controller.classes
         {
             playbackPosition = position;
         }
-
-
-
     }
 }
