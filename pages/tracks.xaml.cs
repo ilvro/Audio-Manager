@@ -154,9 +154,6 @@ namespace Audio_Controller.pages
             
         }
 
-
-
-
         private static T FindVisualChild<T>(DependencyObject parent, string name) where T : FrameworkElement
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
@@ -174,9 +171,5 @@ namespace Audio_Controller.pages
             }
             return null;
         }
-
-
-
-
     }
 }

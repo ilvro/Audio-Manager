@@ -11,7 +11,6 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="ListViewItem">
                                 <Border CornerRadius="5">
-                                    <!-- Adjust the corner radius here -->
                                     <ContentPresenter/>
                                 </Border>
                             </ControlTemplate>
@@ -26,12 +25,12 @@
                 <DataTemplate>
                     <Border Margin="2" Height="70" Background="#e9e8e9" CornerRadius="5">
                         <Grid>
-                            <TextBlock x:Name="DurationBox" Text="{Binding Duration}" Foreground="Black" Margin="0,0,8,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15" Panel.ZIndex="1"></TextBlock>
+                            <TextBlock x:Name="DurationBox" Text="{Binding Duration}" Foreground="Black" Margin="0,0,8,1" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15" Panel.ZIndex="1"></TextBlock>
                             <TextBlock x:Name="TitleBox" Text="{Binding Title}" Foreground="#625b65" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,-38,0,0"></TextBlock>
                             <Button x:Name="PlayBtn" Width="18" Height="16" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,8,0" Command="{Binding PlayCommand}" CommandParameter="{Binding}" >
                                 <Icon:PackIconMaterial Kind="Play" Margin="0 -1.15 0 0" Foreground="#828284"/>
                             </Button>
-                            <ProgressBar Maximum="{Binding TotalDuration}" Value="{Binding CurrentPosition}" Background="Transparent" Height="20" VerticalAlignment="Bottom">
+                            <ProgressBar Maximum="{Binding TotalDuration}" Value="{Binding CurrentPosition}" Background="AliceBlue" Height="20" VerticalAlignment="Bottom">
                                 <ProgressBar.Template>
                                     <ControlTemplate TargetType="ProgressBar">
                                         <Grid>
