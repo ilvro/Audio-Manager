@@ -32,7 +32,7 @@ namespace Audio_Controller.classes
             }
         }
 
-        private static double currentPosition; // currentPosition is Duration but as a double instead of string
+        private static double currentPosition; // currentPosition is Duration but as a double instead of string 
         public double CurrentPosition
         {
             get { return currentPosition; }
