@@ -18,7 +18,7 @@ namespace Audio_Controller.classes
         public string Path { get; set; }
         public string OriginalDuration { get; set; }
 
-        private static double totalDuration; // totalDuration is OriginalDuration but as a double instead of string
+        private static double totalDuration; // totalDuration is OriginalDuration but as a double instead of string 
         public double TotalDuration
         {
             get { return totalDuration; }
