@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Threading;
 using NAudio.Wave;
@@ -12,6 +14,7 @@ namespace Audio_Controller.classes
         Globals globals = App.GlobalsInstance;
         public MediaPlayer mediaPlayer = new MediaPlayer();
         private DispatcherTimer timer;
+        public event EventHandler<TimeSpan> PositionChanged;
 
         private Song currentSong;
         public Song CurrentSong
@@ -40,6 +43,19 @@ namespace Audio_Controller.classes
                 }
             }
         }
+        private int testValue = 0;
+        public int TestValue
+        {
+            get { return testValue; }
+            set
+            {
+                if (testValue != value)
+                {
+                    testValue = value;
+                    OnPropertyChanged(nameof(TestValue));
+                }
+            }
+        }
 
         private TimeSpan totalDuration;
         public TimeSpan TotalDuration
@@ -54,8 +70,6 @@ namespace Audio_Controller.classes
                 }
             }
         }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -97,6 +111,8 @@ namespace Audio_Controller.classes
                 globals.currentlyPlaying.Remove(song);
                 mediaPlayer.Pause();
                 timer.Stop();
+                MessageBox.Show(currentSong.CurrentPosition.ToString());
+               
             }
         }
 
@@ -106,16 +122,22 @@ namespace Audio_Controller.classes
             if (mediaPlayer.NaturalDuration.HasTimeSpan)
             {
                 TimeSpan currentPosition = mediaPlayer.Position;
-                TotalDuration = mediaPlayer.NaturalDuration.TimeSpan; // Update TotalDuration
-                CurrentDuration = currentPosition; // Update CurrentDuration
+                TotalDuration = mediaPlayer.NaturalDuration.TimeSpan; // update TotalDuration
+                CurrentDuration = currentPosition; // update CurrentDuration
+                TestValue++;
+                OnPropertyChanged(nameof(TestValue));
+                
 
-                // Check if the song has ended
+                // check if the song has ended
                 if (currentPosition >= TotalDuration)
                 {
                     mediaPlayer.Stop();
                     timer.Stop();
                     CurrentSong.Duration = CurrentSong.OriginalDuration;
                 }
+
+                // raise the PositionChanged event with the updated position
+                PositionChanged?.Invoke(this, currentPosition);
             }
         }
 

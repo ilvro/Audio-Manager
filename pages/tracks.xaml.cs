@@ -35,7 +35,7 @@ namespace Audio_Controller.pages
             InitializeComponent();
             updateFileList();
             songPlayer = new SongPlayer();
-            DataContext = globals;
+            DataContext = new SongViewModel();
             this.Resources.Add("SongPlayerResource", songPlayer);
 
 
@@ -124,11 +124,11 @@ namespace Audio_Controller.pages
                 string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
                 Mp3FileReader reader = new Mp3FileReader(filePath);
                 TimeSpan duration = reader.TotalTime;
-                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer);
+                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer, 0, 0);
 
                 if (duration.ToString("mm\\:ss").StartsWith("0"))
                 {
-                    song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer);
+                    song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer, 0, 0);
                 }
 
                 songs.Add(song);

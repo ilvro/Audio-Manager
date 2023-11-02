@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using NAudio.Wave;
@@ -31,7 +32,6 @@ namespace Audio_Controller.classes
                 }
             }
         }
-
         private static double currentPosition; // currentPosition is Duration but as a double instead of string 
         public double CurrentPosition
         {
@@ -61,19 +61,25 @@ namespace Audio_Controller.classes
             }
         }
 
-        public Song(string title, string duration, string path, SongPlayer player)
+        public Song(string title, string duration, string path, SongPlayer player, double totalduration, double currentposition)
         {
             Title = title;
             Duration = duration;
             OriginalDuration = Duration;
             Path = path;
             songPlayer = new SongPlayer();
+            TotalDuration = totalduration;
+            CurrentPosition = currentposition;
+            
 
             PlayCommand = new RelayCommand(Play);
 
             // attach an event handler to update the duration as the song progresses
             songPlayer.PropertyChanged += OnSongPlayerPropertyChanged;
         }
+
+
+
 
 
         // change song speed: mediaPlayer.PlaybackSession.PlaybackRate = 2.0;
@@ -104,6 +110,9 @@ namespace Audio_Controller.classes
                 TimeSpan currentPosition = songPlayer.CurrentDuration;
                 TimeSpan totalDuration = songPlayer.TotalDuration;
                 Duration = $"{currentPosition:mm\\:ss} / {totalDuration:mm\\:ss}";
+                TotalDuration = totalDuration.TotalSeconds;
+                CurrentPosition = currentPosition.TotalSeconds;
+                
             }
 
             // store the playback position whenever it changes
