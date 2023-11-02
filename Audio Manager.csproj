@@ -386,7 +386,6 @@
     <Compile Include="classes\RelayCommand.cs" />
     <Compile Include="classes\Song.cs" />
     <Compile Include="classes\SongPlayer.cs" />
-    <Compile Include="classes\SongViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

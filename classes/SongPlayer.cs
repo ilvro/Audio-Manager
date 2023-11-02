@@ -43,19 +43,6 @@ namespace Audio_Controller.classes
                 }
             }
         }
-        private int testValue = 0;
-        public int TestValue
-        {
-            get { return testValue; }
-            set
-            {
-                if (testValue != value)
-                {
-                    testValue = value;
-                    OnPropertyChanged(nameof(TestValue));
-                }
-            }
-        }
 
         private TimeSpan totalDuration;
         public TimeSpan TotalDuration
@@ -111,7 +98,6 @@ namespace Audio_Controller.classes
                 globals.currentlyPlaying.Remove(song);
                 mediaPlayer.Pause();
                 timer.Stop();
-                MessageBox.Show(currentSong.CurrentPosition.ToString());
                
             }
         }
@@ -124,8 +110,6 @@ namespace Audio_Controller.classes
                 TimeSpan currentPosition = mediaPlayer.Position;
                 TotalDuration = mediaPlayer.NaturalDuration.TimeSpan; // update TotalDuration
                 CurrentDuration = currentPosition; // update CurrentDuration
-                TestValue++;
-                OnPropertyChanged(nameof(TestValue));
                 
 
                 // check if the song has ended

@@ -35,7 +35,7 @@ namespace Audio_Controller.pages
             InitializeComponent();
             updateFileList();
             songPlayer = new SongPlayer();
-            DataContext = new SongViewModel();
+            DataContext = globals;
             this.Resources.Add("SongPlayerResource", songPlayer);
 
 
@@ -122,16 +122,24 @@ namespace Audio_Controller.pages
             foreach (string filePath in mp3Files)
             {
                 string fileName = Path.GetFileName(filePath).Replace(".mp3", "");
-                Mp3FileReader reader = new Mp3FileReader(filePath);
-                TimeSpan duration = reader.TotalTime;
-                Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer, 0, 0);
-
-                if (duration.ToString("mm\\:ss").StartsWith("0"))
+                try
                 {
-                    song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer, 0, 0);
-                }
+                    Mp3FileReader reader = new Mp3FileReader(filePath);
+                    TimeSpan duration = reader.TotalTime;
+                    Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer, 0, 0);
 
-                songs.Add(song);
+                    if (duration.ToString("mm\\:ss").StartsWith("0"))
+                    {
+                        song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer, 0, 0);
+                    }
+
+                    songs.Add(song);
+                }
+                catch
+                {
+                    MessageBox.Show("currently in use by another process - unable to add new song");
+                }
+                
             }
 
             // the List<Song> "songs" now contains all the songs in the "tracks" folder
