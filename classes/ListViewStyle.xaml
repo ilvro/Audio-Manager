@@ -33,7 +33,14 @@
                                 <Icon:PackIconMaterial Kind="Play" Margin="0 -1.15 0 0" Foreground="#828284"/>
                             </Button>
                             <ProgressBar Maximum="{Binding TotalDuration}" Value="{Binding CurrentPosition}" Background="AliceBlue" Height="20" VerticalAlignment="Bottom">
-                               
+                                <ProgressBar.Template>
+                                    <ControlTemplate TargetType="ProgressBar">
+                                        <Grid>
+                                            <Rectangle x:Name="PART_Track" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="{TemplateBinding Background}"/>
+                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#b0b0b0" CornerRadius="0, 0, 5, 5"></Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ProgressBar.Template>
                             </ProgressBar>
 
 
