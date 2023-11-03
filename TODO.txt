@@ -1,0 +1,8 @@
+- allow the user to skip to a specific part by clicking in the progress bar
+- make the search bar functional
+- add a volume slider for each song
+- add an options tab with a global volume slider
+- make the pause button change icons when paused
+- make tags work
+- add a looping function, make it able to loop specific parts
+- add a reverb function (maybe)
