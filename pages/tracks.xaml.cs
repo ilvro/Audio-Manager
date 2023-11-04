@@ -126,11 +126,11 @@ namespace Audio_Controller.pages
                 {
                     Mp3FileReader reader = new Mp3FileReader(filePath);
                     TimeSpan duration = reader.TotalTime;
-                    Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, songPlayer, 0, 0);
+                    Song song = new Song(fileName, duration.ToString("mm\\:ss"), filePath, 0, 0);
 
                     if (duration.ToString("mm\\:ss").StartsWith("0"))
                     {
-                        song = new Song(fileName, duration.ToString("m\\:ss"), filePath, songPlayer, 0, 0);
+                        song = new Song(fileName, duration.ToString("m\\:ss"), filePath, 0, 0);
                     }
 
                     songs.Add(song);

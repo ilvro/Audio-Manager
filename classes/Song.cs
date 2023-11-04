@@ -63,7 +63,7 @@ namespace Audio_Controller.classes
             }
         }
 
-        public Song(string title, string duration, string path, SongPlayer player, double totalduration, double currentposition)
+        public Song(string title, string duration, string path, double totalduration, double currentposition)
         {
             Title = title;
             Duration = duration;
