@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using NAudio.Wave;
@@ -11,7 +13,7 @@ namespace Audio_Controller.classes
 {
     public class SongPlayer : INotifyPropertyChanged
     {
-        Globals globals = App.GlobalsInstance;
+        public Globals globals = App.GlobalsInstance;
         public MediaPlayer mediaPlayer = new MediaPlayer();
         private DispatcherTimer timer;
         public event EventHandler<TimeSpan> PositionChanged;
@@ -102,6 +104,7 @@ namespace Audio_Controller.classes
             }
         }
 
+        
 
         private void Timer_Tick(object sender, EventArgs e)
         {

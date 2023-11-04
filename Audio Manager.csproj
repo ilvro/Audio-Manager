@@ -383,6 +383,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\Globals.cs" />
+    <Compile Include="classes\ListViewStyle.cs" />
     <Compile Include="classes\RelayCommand.cs" />
     <Compile Include="classes\ProgressBarSmoother.cs" />
     <Compile Include="classes\Song.cs" />
