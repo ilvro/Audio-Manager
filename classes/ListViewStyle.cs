@@ -20,14 +20,14 @@ namespace Audio_Controller.classes
             {
                 ProgressBar progressBar = (ProgressBar)sender;
 
-                // Calculate the position where the user clicked as a percentage of the total width
+                // calculate the position where the user clicked as a percentage of the total width
                 double clickPosition = e.GetPosition(progressBar).X / progressBar.ActualWidth;
 
-                // Update the song's playback position based on the click position
+                // update the song's playback position based on the click position
                 double newPlaybackPosition = clickPosition * songPlayer.CurrentSong.TotalDuration;
                 songPlayer.CurrentSong.SetPlaybackPosition(TimeSpan.FromSeconds(newPlaybackPosition));
 
-                // Update the MediaPlayer's position
+                // update the MediaPlayer's position
                 songPlayer.mediaPlayer.Position = TimeSpan.FromSeconds(newPlaybackPosition);
             }
         }
