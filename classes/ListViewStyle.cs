@@ -19,18 +19,23 @@ namespace Audio_Controller.classes
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 ProgressBar progressBar = (ProgressBar)sender;
+                Song song = (Song)progressBar.DataContext; // Get the Song instance.
 
-                // calculate the position where the user clicked as a percentage of the total width
+                // Now you have the correct songPlayer associated with the Song.
+                SongPlayer songPlayer = song.songPlayer;
+
+                // Calculate the position where the user clicked as a percentage of the total width
                 double clickPosition = e.GetPosition(progressBar).X / progressBar.ActualWidth;
 
-                // update the song's playback position based on the click position
+                // Update the song's playback position based on the click position
                 double newPlaybackPosition = clickPosition * songPlayer.CurrentSong.TotalDuration;
-                songPlayer.CurrentSong.SetPlaybackPosition(TimeSpan.FromSeconds(newPlaybackPosition));
+                song.SetPlaybackPosition(TimeSpan.FromSeconds(newPlaybackPosition));
 
-                // update the MediaPlayer's position
+                // Update the MediaPlayer's position
                 songPlayer.mediaPlayer.Position = TimeSpan.FromSeconds(newPlaybackPosition);
             }
         }
+
 
     }
 }

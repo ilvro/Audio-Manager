@@ -16,7 +16,7 @@ namespace Audio_Controller.classes
         public Globals globals = App.GlobalsInstance;
         public ICommand PlayCommand { get; private set; }
 
-        private SongPlayer songPlayer;
+        public SongPlayer songPlayer { get; set; }
         public string Title { get; set; }
         public string Path { get; set; }
         public string OriginalDuration { get; set; }
