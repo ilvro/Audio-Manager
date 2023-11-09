@@ -13,7 +13,6 @@ namespace Audio_Controller.classes
 {
     public partial class ListViewStyle : ResourceDictionary
     {
-        private SongPlayer songPlayer;
         private void ProgressBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -24,11 +23,10 @@ namespace Audio_Controller.classes
 
                 double clickPosition = e.GetPosition(progressBar).X / progressBar.ActualWidth;
                 double newPlaybackPosition = clickPosition * songPlayer.CurrentSong.TotalDuration;
+                songPlayer.CurrentSong.SetPlaybackPosition(TimeSpan.FromSeconds(newPlaybackPosition));
                 song.SetPlaybackPosition(TimeSpan.FromSeconds(newPlaybackPosition));
                 songPlayer.mediaPlayer.Position = TimeSpan.FromSeconds(newPlaybackPosition);
             }
         }
-
-
     }
 }
