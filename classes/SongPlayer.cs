@@ -65,7 +65,7 @@ namespace Audio_Controller.classes
         public SongPlayer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // Update every second
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
         }
 
@@ -93,7 +93,7 @@ namespace Audio_Controller.classes
             {
                 CurrentSong = song;
 
-                // Store the playback position when pausing
+                // store the playback position when pausing
                 song.SetPlaybackPosition(mediaPlayer.Position);
 
                 globals.currentlyPaused.Add(song);
