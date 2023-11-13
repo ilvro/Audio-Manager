@@ -26,7 +26,7 @@ namespace Audio_Controller.pages
     {
         Globals globals = App.GlobalsInstance;
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
-        private SongPlayer songPlayer; // Declare the SongPlayer instance
+        private SongPlayer songPlayer;
 
         public tracks()
         {
