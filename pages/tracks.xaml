@@ -12,8 +12,11 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- Include your other dictionaries here -->
                 <ResourceDictionary Source="../classes/ListViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <CollectionViewSource x:Key="SongsCollectionViewSource" Source="{Binding songs}" />
         </ResourceDictionary>
     </Page.Resources>
 
@@ -29,7 +32,7 @@
 
 
         <TextBlock HorizontalAlignment="Left" Margin="25,216,0,0" TextWrapping="Wrap" Text="Search for:" VerticalAlignment="Top" FontSize="24" Height="32" Width="112"/>
-        <TextBox x:Name="searchBar" HorizontalAlignment="Left" Height="36" Margin="25,253,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="537" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus" Grid.ColumnSpan="2">
+        <TextBox x:Name="searchBar" TextChanged="searchBar_TextChanged" HorizontalAlignment="Left" Height="36" Margin="25,253,0,0" Text=" Begin by typing to choose tracks by title..." VerticalAlignment="Top" Width="537" VerticalContentAlignment="Center" Panel.ZIndex="1" Foreground="DarkGray" FontSize="16" PreviewMouseLeftButtonDown="searchBar_PreviewMouseLeftButtonDown" LostFocus="searchBar_LostFocus" Grid.ColumnSpan="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>
@@ -44,11 +47,11 @@
               ItemsSource="{Binding Songs}"
               Style="{StaticResource ListStyle}"
               x:Name="TracksView" Margin="25,317,27,39" Grid.ColumnSpan="2"
-              d:ItemsSource="{d:SampleData ItemCount=5}">
+              d:ItemsSource="{d:SampleData ItemCount=5}"
+              Loaded="TracksView_Loaded">
         </ListView>
 
         <Button x:Name="LinkUploadBtn" Content="Click here to download from a link." HorizontalAlignment="Center"  VerticalAlignment="Top" Width="221" Height="33" Margin="180,175,188,0" Opacity="0.5" Background="#d7f4f4" FontSize="12" Click="LinkUploadBtn_Click" Grid.ColumnSpan="2"/>
-
         <TextBlock HorizontalAlignment="Left" Margin="154,181,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top" FontSize="14"/>
 
     </Grid>

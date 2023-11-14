@@ -15,6 +15,8 @@ using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using NAudio.Wave;
 using System.Diagnostics;
+using System.Windows.Data;
+using System.ComponentModel;
 
 namespace Audio_Controller.pages
 {
@@ -27,13 +29,14 @@ namespace Audio_Controller.pages
         Globals globals = App.GlobalsInstance;
         private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
         private SongPlayer songPlayer;
+        public List<Song> songs = new List<Song>();
 
         public tracks()
         {
             InitializeComponent();
             updateFileList();
             songPlayer = new SongPlayer();
-            DataContext = globals;
+            DataContext = this;
             this.Resources.Add("SongPlayerResource", songPlayer);
 
 
@@ -115,7 +118,6 @@ namespace Audio_Controller.pages
             }
 
             string[] mp3Files = Directory.GetFiles(currentPath + @"tracks\", "*.mp3"); // get all mp3 files in the folder
-            List<Song> songs = new List<Song>();
 
             foreach (string filePath in mp3Files)
             {
@@ -131,13 +133,16 @@ namespace Audio_Controller.pages
                         song = new Song(fileName, duration.ToString("m\\:ss"), filePath, 0, 0);
                     }
 
-                    songs.Add(song);
+                    // Ensure that the songs list is not null before adding
+                    if (songs != null)
+                    {
+                        songs.Add(song);
+                    }
                 }
                 catch
                 {
-                    MessageBox.Show("currently in use by another process - unable to add new song");
+                    MessageBox.Show("currently in use by another process - unable to add a new song");
                 }
-                
             }
 
             // the List<Song> "songs" now contains all the songs in the "tracks" folder
@@ -176,6 +181,36 @@ namespace Audio_Controller.pages
                 }
             }
             return null;
+        }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TracksView != null && TracksView.ItemsSource != null)
+            {
+                // Get the ICollectionView from the CollectionViewSource
+                ICollectionView view = CollectionViewSource.GetDefaultView(TracksView.ItemsSource);
+
+                if (view != null)
+                {
+                    // Apply filtering logic based on the search bar text
+                    view.Filter = item =>
+                    {
+                        if (item is Song song)
+                        {
+                            return string.IsNullOrEmpty(searchBar.Text) || song.Title.StartsWith(searchBar.Text, StringComparison.OrdinalIgnoreCase);
+                        }
+                        return false; // If the item is not a Song, don't display it
+                    };
+                }
+            }
+        }
+
+        private void TracksView_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (TracksView != null && TracksView.ItemsSource != null)
+            {
+                CollectionViewSource.GetDefaultView(TracksView.ItemsSource).Refresh();
+            }
         }
     }
 }
