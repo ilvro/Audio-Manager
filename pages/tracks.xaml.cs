@@ -111,6 +111,8 @@ namespace Audio_Controller.pages
 
         public void updateFileList()
         {
+            songs.Clear();
+
             string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
             if (currentPath.Contains("bin\\Debug"))
             {
