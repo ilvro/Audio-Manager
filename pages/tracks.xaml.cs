@@ -135,7 +135,6 @@ namespace Audio_Controller.pages
                         song = new Song(fileName, duration.ToString("m\\:ss"), filePath, 0, 0);
                     }
 
-                    // Ensure that the songs list is not null before adding
                     if (songs != null)
                     {
                         songs.Add(song);
@@ -189,29 +188,20 @@ namespace Audio_Controller.pages
         {
             if (TracksView != null && TracksView.ItemsSource != null)
             {
-                // Get the ICollectionView from the CollectionViewSource
                 ICollectionView view = CollectionViewSource.GetDefaultView(TracksView.ItemsSource);
 
                 if (view != null)
                 {
-                    // Apply filtering logic based on the search bar text
+                    // apply filtering logic based on the search bar text
                     view.Filter = item =>
                     {
                         if (item is Song song)
                         {
                             return string.IsNullOrEmpty(searchBar.Text) || song.Title.StartsWith(searchBar.Text, StringComparison.OrdinalIgnoreCase);
                         }
-                        return false; // If the item is not a Song, don't display it
+                        return false;
                     };
                 }
-            }
-        }
-
-        private void TracksView_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (TracksView != null && TracksView.ItemsSource != null)
-            {
-                CollectionViewSource.GetDefaultView(TracksView.ItemsSource).Refresh();
             }
         }
     }

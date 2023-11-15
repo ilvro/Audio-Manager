@@ -1,5 +1,4 @@
-- allow the user to skip to a specific part by clicking in the progress bar
-- make the search bar functional
+- add an indicator to a when a song is playing
 - add a rename button to songs
 - add a volume slider for each song
 - add an options tab with a global volume slider
