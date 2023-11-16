@@ -186,7 +186,7 @@ namespace Audio_Controller.pages
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (TracksView != null && TracksView.ItemsSource != null)
+            if (TracksView != null && TracksView.ItemsSource != null && searchBar.Text != " Begin by typing to choose tracks by title...")
             {
                 ICollectionView view = CollectionViewSource.GetDefaultView(TracksView.ItemsSource);
 
