@@ -27,7 +27,6 @@ namespace Audio_Controller.pages
     public partial class tracks : Page
     {
         Globals globals = App.GlobalsInstance;
-        private MediaPlayer mediaPlayer = new MediaPlayer(); // should this be here??
         private SongPlayer songPlayer;
         public List<Song> songs = new List<Song>();
 
@@ -45,8 +44,6 @@ namespace Audio_Controller.pages
             timer.Interval = new TimeSpan(0, 0, 5); // 5 seconds
             timer.Start();
         }
-
-
 
         private void searchBar_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
