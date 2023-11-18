@@ -78,10 +78,6 @@ namespace Audio_Controller.classes
             songPlayer.PropertyChanged += OnSongPlayerPropertyChanged;
         }
 
-
-
-
-
         // change song speed: mediaPlayer.PlaybackSession.PlaybackRate = 2.0;
         private void Play(object obj)
         {
